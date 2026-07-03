@@ -106,7 +106,7 @@ export default function AccountClient() {
       if (!user?.id) return;
       setLoading(true);
       try {
-        const compras = await storeService.getPurchases(user.id);
+        const compras = await storeService.getPurchases(user.id, user.correo);
         setPurchases(compras);
       } catch (error) {
         console.error("Error al cargar compras:", error);

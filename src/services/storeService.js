@@ -52,9 +52,9 @@ export const storeService = {
     return await apiEndpoints.getLibroPorId(id);
   },
 
-  // 🔹 HISTORIAL DE COMPRAS
-  async getPurchases(userId) {
-    const res = await apiEndpoints.getPurchasedItems(userId);
+  // 🔹 HISTORIAL DE COMPRAS (Soporta ID y Correo para Auth0)
+  async getPurchases(userId, email) {
+    const res = await apiEndpoints.getPurchasedItems(userId, email);
     if (res && res.compras) return res.compras;
     if (Array.isArray(res)) return res;
     return [];

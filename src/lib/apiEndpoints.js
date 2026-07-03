@@ -26,6 +26,6 @@ export const apiEndpoints = {
   // Espacios de coworking disponibles
   getCoworkingSpaces: () => apiClient(`/coworkingnew/spaces`),
 
-  // Historial de compras de un usuario
-  getPurchasedItems: (id) => apiClient(`/compras?userId=${id}`),
+  // Historial de compras de un usuario (acepta ID o Correo de Auth0)
+  getPurchasedItems: (id, email) => apiClient(`/compras?userId=${id}&email=${email || ''}`),
 };
