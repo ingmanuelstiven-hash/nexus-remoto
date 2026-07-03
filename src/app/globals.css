@@ -1,0 +1,247 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================
+   TOKENS
+   ============================= */
+:root {
+
+  --color-broom-500: #fdf001;
+  --color-woodsmoke-950: #1a1a1a;
+
+  --bg-footer: var(--color-woodsmoke-950);
+  --color-bg: #f8f9fa;
+  --color-card: rgba(255, 255, 255, 0.95);
+  --color-card-border: #e2e8f0;
+  --color-card-shadow: 0 40px 80px rgba(15, 23, 42, 0.08);
+  --color-primary: #111827;
+  --color-primary-contrast: #ffffff;
+  --text-primary: #111827;
+  --color-input-bg: #f8fafc;
+  --color-input-border: #e2e8f0;
+  --color-input-placeholder: #94a3b8;
+  --color-panel-bg: #be2633;
+  --color-panel-border: #fde047;
+  --color-panel-text: #0f172a;
+
+  --glass-bg: rgba(255,255,255,0.8);
+  --glass-border: rgba(255,255,255,0.1);
+  --glass-shadow: 0 10px 40px rgba(0,0,0,0.1);
+
+  --header-height: 68px;
+
+    /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 10px 40px rgba(0,0,0,0.1);
+
+  /* Tokens semánticos */
+  --bg-footer: var(--color-woodsmoke-950);
+  --color-bg-grainy: #fff9e6;
+  --color-bg: #f8f9fa;
+  --color-accent-bg: rgba(253, 240, 1, 0.15);
+  --glass-subtle: rgba(255,255,255,0.05);
+
+  /* Gradients */
+  --bg-main-gradient: radial-gradient(
+    circle at 10% 10%,
+    var(--color-bg-grainy) 0%,
+    var(--color-bg) 50%
+  );
+}
+
+  
+
+/* =============================
+   BASE
+   ============================= */
+@layer base {
+
+  body {
+    font-family: var(--font-sans), sans-serif;
+    background: var(--bg-main-gradient);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+  }
+  .title-h2 {
+    @apply text-3xl md:text-4xl font-semibold animate-fade-up; 
+  }
+}
+
+/* =============================
+   COMPONENTES
+   ============================= */
+@layer components {
+
+  /* HEADER */
+  .header {
+    @apply flex justify-between items-center px-5 py-5 sticky top-0 backdrop-blur-md rounded-b-2xl z-50;
+    height: var(--header-height);
+    background: var(--glass-bg);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  }
+
+  /* FOOTER */
+  .footer {
+    position: relative;
+    background-color: var(--bg-footer);
+    overflow: hidden;
+  }
+
+  .footer::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    height: 500px;
+    background: var(--bg-footer-yellowdot-gradient);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .footer-container,
+  .footer-bottom {
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-column {
+    @apply rounded-lg bg-gray-800 text-white p-5 border border-white/10;
+  }
+
+  /* BOTONES */
+  .btn-primary {
+    @apply text-white px-4 py-2 rounded-2xl font-semibold transition;
+    background: var(--color-primary);
+  }
+
+  .btn-primary:hover {
+    background: #1f2937;
+  }
+
+  .btn-secondary {
+    @apply border px-4 py-2 rounded-xl;
+    border-color: #d1d5db;
+  }
+
+  .btn-secondary:hover {
+    @apply bg-gray-100;
+  }
+
+  .login-page {
+    background: var(--color-bg);
+  }
+
+  .login-card {
+    background: var(--color-card);
+    border: 1px solid var(--color-card-border);
+    box-shadow: var(--color-card-shadow);
+  }
+
+  .login-home-pill {
+    background: var(--color-primary);
+    color: var(--color-primary-contrast);
+  }
+
+  .login-panel {
+    background: var(--color-panel-bg);
+    border: 1px solid var(--color-panel-border);
+    color: var(--color-panel-text);
+  }
+
+  /* CARD */
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-md shadow-lg rounded-xl p-4 border transition;
+  }
+
+  .glass-card:hover {
+    @apply shadow-xl -translate-y-1;
+  }
+
+  /* INPUT */
+  .input {
+    @apply rounded-md px-4 py-2 w-full focus:ring-2 outline-none;
+    background: var(--color-input-bg);
+    border: 1px solid var(--color-input-border);
+    color: var(--text-primary);
+  }
+
+  .input::placeholder {
+    color: var(--color-input-placeholder);
+  }
+
+  /* BTN TAB */
+  .btn-tab {
+    @apply
+    relative
+    bg-slate-100
+    p-6
+    cursor-pointer
+    top-0
+    z-10
+    border
+    border-border-light
+    rounded-t-2xl;
+
+    /* sm: tarjeta completa */
+    @apply rounded-2xl;
+
+    /* md+: vuelve a comportamiento tipo tab */
+    @apply md:rounded-t-2xl md:rounded-b-none;
+  }
+
+  /* Hover suave: solo si la tarjeta no está activa */
+    .btn-tab:not(.is-active):hover {
+      @apply bg-brand-100 shadow-lg -top-1;
+    }
+
+    /* ESTADO ACTIVO: Respuesta instantánea */
+    .btn-tab.is-active {
+      @apply bg-brand-500 shadow-xl md:-top-2 z-20;
+    }
+
+  .price-badge {
+    @apply absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-semibold transition-all duration-200;
+  }
+}  
+
+
+
+/* =============================
+   UTILIDADES
+   ============================= */
+@layer utilities {
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .h-dvh-minusheader {
+    height: calc(100vh - var(--header-height));
+  }
+
+  /* ===== Custom Scrollbar (Tailwind 4) ===== */
+  .scrollbar-custom {
+    scrollbar-width: thin;
+    scrollbar-color: #bcbcbc transparent; /* usa tu brand */
+  }
+
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    @apply bg-brand-300; /* usa tu brand */
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+}
