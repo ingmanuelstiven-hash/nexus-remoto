@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { LogOut, User } from "lucide-react";
 
+import { useI18n } from "@/context/TranslationsProvider";
+
 function HeaderUser({
   accountRef,
   openAccount,
@@ -12,6 +14,7 @@ function HeaderUser({
 }) {
   const router = useRouter();
   const { logout } = useAuth();
+  const t = useI18n();
 
   const handleLogout = () => {
     logout();
@@ -36,7 +39,7 @@ function HeaderUser({
           transition
         "
       >
-        Hola, {user?.nombre || "Usuario"}
+        {t.user.hello}, {user?.nombre || t.user.guest}
       </button>
 
       {/* DROPDOWN */}

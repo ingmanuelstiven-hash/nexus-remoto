@@ -9,8 +9,28 @@
     "logout": "Logout"
   },
   "home": {
-    "hero_title": "Discover, Learn and Connect",
-    "hero_subtitle": "The space designed to enhance your university experience.",
-    "top_books": "Top 10 best sellers"
+    "hero_title": "Nexus: Your learning and creation space",
+    "hero_subtitle": "Books, coworking, and experiences in one place.",
+    "hero_cta": "Explore services",
+    "topbooks_title": "Top 10 Best Sellers",
+    "topbooks_subtitle": "Our selection of the most popular academic and literary copies in recent weeks.",
+    "topbooks_empty": "There are no featured books at the moment."
+  },
+  "library": {
+    "filter_btn": "Filter by",
+    "filters": "Filters",
+    "featured": "Featured",
+    "top_10": "🔥 Top 10 best sellers",
+    "category": "Category",
+    "year": "Year",
+    "clear_filters": "Clear filters",
+    "empty": "No books available.",
+    "best_seller": "Best seller",
+    "view_detail": "View detail",
+    "add_cart": "Add to cart"
+  },
+  "user": {
+    "hello": "Hello",
+    "guest": "User"
   }
 }

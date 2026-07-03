@@ -3,12 +3,14 @@
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
+import { useI18n } from "@/context/TranslationsProvider";
 import BookImage from "./BookImage";
 
 function BookCard({ libro }) {
   const router = useRouter();
   const { addToCart } = useCart();
   const { isAuthenticated, login } = useAuth();
+  const t = useI18n();
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
@@ -31,7 +33,7 @@ function BookCard({ libro }) {
       {/* BADGE */}
       {libro.masVendido && (
         <span className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-full text-[11px] font-bold bg-yellow-300 text-slate-950 shadow-sm">
-          Más vendido
+          {t.library.best_seller}
         </span>
       )}
 
@@ -76,7 +78,7 @@ function BookCard({ libro }) {
             onClick={() => router.push(`/library/${libro.id}`)}
             className="btn-primary w-full py-2 text-xs font-bold rounded-xl"
           >
-            Ver detalle
+            {t.library.view_detail}
           </button>
 
           {/* BUTTON CART */}
@@ -84,7 +86,7 @@ function BookCard({ libro }) {
             onClick={handleAddToCart}
             className="btn-primary w-full py-2 text-xs font-bold rounded-xl"
           >
-            Añadir al carrito
+            {t.library.add_cart}
           </button>
         </div>
       </div>

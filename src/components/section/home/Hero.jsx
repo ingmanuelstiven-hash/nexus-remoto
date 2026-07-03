@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Slider3D from "@/components/ui/home/Slider3D";
+import { useI18n } from "@/context/TranslationsProvider";
 
 const heroImages = [
   "/img/home-slider/1.jpg",
@@ -11,10 +12,11 @@ const heroImages = [
 
 function Hero() {
   const [visible, setVisible] = useState(false);
+  const t = useI18n();
 
   useEffect(() => {
-    const t = setTimeout(() => setVisible(true), 50); // 🔥 evita hydration flicker
-    return () => clearTimeout(t);
+    const timer = setTimeout(() => setVisible(true), 50); // 🔥 evita hydration flicker
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -34,7 +36,7 @@ function Hero() {
             }`}
             style={{ transitionDelay: "100ms" }} // 🔥 delay real
           >
-            Nexus: Tu espacio de aprendizaje y creación
+            {t.home.hero_title}
           </h1>
 
           {/* DESCRIPTION */}
@@ -44,7 +46,7 @@ function Hero() {
             }`}
             style={{ transitionDelay: "200ms" }}
           >
-            Libros, coworking y experiencias en un solo lugar.
+            {t.home.hero_subtitle}
           </p>
 
           {/* CTA */}
@@ -55,7 +57,7 @@ function Hero() {
             }`}
             style={{ transitionDelay: "300ms" }}
           >
-            Explorar servicios
+            {t.home.hero_cta}
           </a>
         </div>
 

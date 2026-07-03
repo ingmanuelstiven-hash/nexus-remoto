@@ -13,7 +13,7 @@ function getLocale(request) {
   return match || defaultLocale;
 }
 
-export async function middleware(request) {
+export async function proxy(request) {
   const { pathname } = request.nextUrl;
   
   // Excluir archivos estáticos, imágenes, rutas de auth y apis

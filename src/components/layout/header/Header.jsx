@@ -10,6 +10,7 @@ import { useI18n } from "@/context/TranslationsProvider";
 import HeaderCart from "./HeaderCart";
 import HeaderUser from "./HeaderUser";
 import HeaderMobile from "./HeaderMobile";
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 
 function Header() {
   const router = useRouter();
@@ -82,13 +83,7 @@ function Header() {
           )}
 
           {/* SELECTOR DE IDIOMA (Derecha) */}
-          <div className="flex gap-1.5 text-xs font-bold text-slate-500 bg-slate-100 px-3 py-1.5 rounded-full ml-4">
-            <a href="/es" className="hover:text-brand-600 transition">ES</a>|
-            <a href="/en" className="hover:text-brand-600 transition">EN</a>|
-            <a href="/fr" className="hover:text-brand-600 transition">FR</a>|
-            <a href="/it" className="hover:text-brand-600 transition">IT</a>|
-            <a href="/de" className="hover:text-brand-600 transition">DE</a>
-          </div>
+          <LanguageSwitcher className="ml-4" />
         </nav>
 
         {/* MOBILE BTN */}

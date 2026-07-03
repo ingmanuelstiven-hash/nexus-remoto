@@ -1,10 +1,12 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
+import { useI18n } from "@/context/TranslationsProvider";
 
 function LibraryFilters() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const t = useI18n();
 
   // 🔹 estado desde URL
   const filtros = {
@@ -63,7 +65,7 @@ function LibraryFilters() {
       {/* HEADER */}
       <div className="pb-6 border-b border-border-default">
         <h3 className="text-lg font-extrabold tracking-tight">
-          Filtros
+          {t.library.filters}
         </h3>
       </div>
 
@@ -73,7 +75,7 @@ function LibraryFilters() {
         {/* 🔥 DESTACADOS */}
         <div className="mb-8">
           <h4 className="text-[11px] font-bold uppercase tracking-widest text-text-primary/50 mb-4">
-            Destacados
+            {t.library.featured}
           </h4>
 
           <button
@@ -82,14 +84,14 @@ function LibraryFilters() {
             }`}
             onClick={() => updateFilter("top", "top10")}
           >
-            🔥 Top 10 más vendidos
+            {t.library.top_10}
           </button>
         </div>
 
         {/* 📚 CATEGORÍAS */}
         <div className="mb-8">
           <h4 className="text-[11px] font-bold uppercase tracking-widest text-text-primary/50 mb-4">
-            Categoría
+            {t.library.category}
           </h4>
 
           <div className="space-y-2">
@@ -110,7 +112,7 @@ function LibraryFilters() {
         {/* 📅 AÑO */}
         <div className="mb-8">
           <h4 className="text-[11px] font-bold uppercase tracking-widest text-text-primary/50 mb-4">
-            Año
+            {t.library.year}
           </h4>
 
           <div className="space-y-2">
@@ -134,7 +136,7 @@ function LibraryFilters() {
             onClick={clearFilters}
             className="w-full text-sm font-semibold text-brand-600 hover:underline"
           >
-            Limpiar filtros
+            {t.library.clear_filters}
           </button>
         </div>
 

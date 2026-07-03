@@ -5,9 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import BookCard from "@/components/ui/library/BookCard";
 import LibraryFilters from "@/components/section/library/LibraryFilters";
+import { useI18n } from "@/context/TranslationsProvider";
 
 export default function LibraryClient({ libros }) {
   const [openFilters, setOpenFilters] = useState(false);
+  const t = useI18n();
 
   return (
     <main className="min-h-dvh-minusheader mx-auto relative max-w-7xl">
@@ -17,7 +19,7 @@ export default function LibraryClient({ libros }) {
           onClick={() => setOpenFilters(true)}
           className="btn-secondary w-full py-2"
         >
-          Filtrar por
+          {t.library.filter_btn}
         </button>
       </div>
 
@@ -66,7 +68,7 @@ export default function LibraryClient({ libros }) {
               ) : (
                 <div className="col-span-full flex items-center justify-center py-20">
                   <p className="text-text-secondary text-center">
-                    No hay libros disponibles.
+                    {t.library.empty}
                   </p>
                 </div>
               )}

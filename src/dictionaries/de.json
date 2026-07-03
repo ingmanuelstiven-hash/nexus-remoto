@@ -9,8 +9,28 @@
     "logout": "Abmelden"
   },
   "home": {
-    "hero_title": "Entdecken, Lernen und Verbinden",
-    "hero_subtitle": "Der Raum, der entwickelt wurde, um Ihre Universitätserfahrung zu verbessern.",
-    "top_books": "Top 10 Bestseller"
+    "hero_title": "Nexus: Ihr Lern- und Gestaltungsraum",
+    "hero_subtitle": "Bücher, Coworking und Erlebnisse an einem Ort.",
+    "hero_cta": "Dienste erkunden",
+    "topbooks_title": "Top 10 Bestseller",
+    "topbooks_subtitle": "Unsere Auswahl der beliebtesten akademischen und literarischen Exemplare der letzten Wochen.",
+    "topbooks_empty": "Es gibt derzeit keine vorgestellten Bücher."
+  },
+  "library": {
+    "filter_btn": "Filtern nach",
+    "filters": "Filter",
+    "featured": "Hervorgehoben",
+    "top_10": "🔥 Top 10 Bestseller",
+    "category": "Kategorie",
+    "year": "Jahr",
+    "clear_filters": "Filter löschen",
+    "empty": "Keine Bücher verfügbar.",
+    "best_seller": "Bestseller",
+    "view_detail": "Details ansehen",
+    "add_cart": "In den Warenkorb"
+  },
+  "user": {
+    "hello": "Hallo",
+    "guest": "Benutzer"
   }
 }

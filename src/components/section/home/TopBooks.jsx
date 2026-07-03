@@ -1,16 +1,19 @@
 "use client";
 
 import BookCard from "@/components/ui/library/BookCard";
+import { useI18n } from "@/context/TranslationsProvider";
 
 export default function TopBooks({ books }) {
+  const t = useI18n();
+
   return (
     <section className="max-w-7xl mx-auto px-6 py-16">
       <header className="mb-12 space-y-3">
         <h2 className="title-h2">
-          Los 10 libros más vendidos
+          {t.home.topbooks_title}
         </h2>
         <p className="text-slate-600">
-          Nuestra selección de los ejemplares académicos y literarios más populares en las últimas semanas.
+          {t.home.topbooks_subtitle}
         </p>
       </header>
       
@@ -23,7 +26,7 @@ export default function TopBooks({ books }) {
           ))
         ) : (
           <div className="col-span-full py-16 text-center text-slate-500">
-            No hay libros destacados en este momento.
+            {t.home.topbooks_empty}
           </div>
         )}
       </div>

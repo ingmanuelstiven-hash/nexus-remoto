@@ -7,6 +7,7 @@ import { LogOut } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLockBodyScroll } from "@/hooks/useLockBodyScroll";
 import { useI18n } from "@/context/TranslationsProvider";
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 
 function HeaderMobile({ open, user, totalItems, onClose, onLogout }) {
   const [mounted, setMounted] = useState(false);
@@ -76,13 +77,7 @@ function HeaderMobile({ open, user, totalItems, onClose, onLogout }) {
             <nav className="flex-1 px-6 py-6 flex flex-col gap-4 text-sm">
 
               {/* Language Selector Mobile */}
-              <div className="flex gap-2 text-xs font-bold text-slate-500 bg-slate-100 px-3 py-2 rounded-lg justify-center mb-2">
-                <a href="/es" className="hover:text-brand-600">ES</a>|
-                <a href="/en" className="hover:text-brand-600">EN</a>|
-                <a href="/fr" className="hover:text-brand-600">FR</a>|
-                <a href="/it" className="hover:text-brand-600">IT</a>|
-                <a href="/de" className="hover:text-brand-600">DE</a>
-              </div>
+              <LanguageSwitcher className="justify-center mb-2" />
 
               {!user && (
                 <Link href="/login" onClick={onClose}>

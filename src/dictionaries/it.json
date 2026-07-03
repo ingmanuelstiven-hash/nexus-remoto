@@ -9,8 +9,28 @@
     "logout": "Esci"
   },
   "home": {
-    "hero_title": "Scopri, Impara e Connetti",
-    "hero_subtitle": "Lo spazio progettato per migliorare la tua esperienza universitaria.",
-    "top_books": "I 10 più venduti"
+    "hero_title": "Nexus: Il tuo spazio di apprendimento e creazione",
+    "hero_subtitle": "Libri, coworking ed esperienze in un unico posto.",
+    "hero_cta": "Esplora i servizi",
+    "topbooks_title": "I 10 libri più venduti",
+    "topbooks_subtitle": "La nostra selezione delle copie accademiche e letterarie più popolari delle ultime settimane.",
+    "topbooks_empty": "Non ci sono libri in primo piano al momento."
+  },
+  "library": {
+    "filter_btn": "Filtra per",
+    "filters": "Filtri",
+    "featured": "In evidenza",
+    "top_10": "🔥 Top 10 più venduti",
+    "category": "Categoria",
+    "year": "Anno",
+    "clear_filters": "Cancella filtri",
+    "empty": "Nessun libro disponibile.",
+    "best_seller": "Bestseller",
+    "view_detail": "Vedi dettagli",
+    "add_cart": "Aggiungi al carrello"
+  },
+  "user": {
+    "hello": "Ciao",
+    "guest": "Utente"
   }
 }
