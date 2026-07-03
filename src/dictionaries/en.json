@@ -32,5 +32,70 @@
   "user": {
     "hello": "Hello",
     "guest": "User"
+  },
+  "cart": {
+    "empty_title": "Your cart is empty",
+    "empty_desc": "Explore the library and add your favorite books or magazines to continue shopping.",
+    "explore_btn": "Explore library",
+    "summary": "Purchase summary",
+    "title": "Cart",
+    "subtitle": "Review selected products before finishing your purchase.",
+    "keep_shopping": "Keep shopping",
+    "quantity": "Quantity",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "checkout_btn": "Checkout"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "back_cart": "Back to cart",
+    "payment_details": "Payment details",
+    "order_summary": "Order summary",
+    "pay_btn": "Pay now",
+    "success": "Successful Purchase!",
+    "success_desc": "Your order has been processed and inventory updated.",
+    "order": "Order",
+    "completed": "Completed",
+    "total_paid": "Total Paid",
+    "back_library": "Back to Library",
+    "view_purchases": "View my Purchases",
+    "empty_title": "Your cart is empty",
+    "empty_desc": "Add some books from the catalog to start checkout.",
+    "explore_catalog": "Explore Catalog",
+    "billing_details": "Billing Details",
+    "fullname": "Full Name",
+    "email": "Email address",
+    "card_number": "Card Number",
+    "processing": "Processing payment..."
+  },
+  "coworking": {
+    "title": "Coworking Spaces",
+    "total_spaces": "Total spaces",
+    "available": "Available",
+    "occupied": "Occupied",
+    "filter_all": "All",
+    "filter_available": "Available",
+    "filter_occupied": "Occupied",
+    "book": "Book",
+    "next": "Next",
+    "confirm": "Confirm"
+  },
+  "account": {
+    "title": "My Account",
+    "logout": "Log out",
+    "reservations": "Your reservations",
+    "purchases": "Your purchases"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "users": "Users",
+    "stats": "Statistics"
+  },
+  "book_detail": {
+    "author": "Author",
+    "category": "Category",
+    "year": "Year of publication",
+    "add_cart": "Add to cart",
+    "synopsis": "Synopsis"
   }
 }

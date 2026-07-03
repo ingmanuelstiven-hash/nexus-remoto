@@ -4,10 +4,12 @@ import { useState } from "react";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
 import BookImage from "@/components/ui/library/BookImage";
+import { useI18n } from "@/context/TranslationsProvider";
 
 function BookDetailClient({ book }) {
   const { addToCart } = useCart();
   const { isAuthenticated, login } = useAuth();
+  const { t } = useI18n();
   const [cantidad, setCantidad] = useState(1);
 
   if (!book) {
@@ -118,7 +120,7 @@ function BookDetailClient({ book }) {
 
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400 mb-2">
-                Sinopsis
+                {t.book_detail.synopsis}
               </p>
 
               <p className="text-sm sm:text-base leading-7 text-slate-600">
@@ -185,7 +187,7 @@ function BookDetailClient({ book }) {
                 hover:shadow-md
               "
             >
-              Añadir al carrito
+              {t.book_detail.add_cart}
             </button>
           </div>
         </section>

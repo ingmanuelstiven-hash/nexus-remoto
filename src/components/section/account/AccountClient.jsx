@@ -86,7 +86,7 @@ function HistoryItem({ compra }) {
       <div className="flex flex-col sm:items-end justify-between self-stretch py-1 gap-4 sm:gap-0">
         <span className="text-sm text-slate-600 font-medium">{compra.fecha || "9 feb 2025"}</span>
         <button className="px-5 py-2 bg-slate-900 text-white font-medium rounded-full text-sm hover:bg-slate-800 transition shadow-sm mt-auto">
-          Ver detalles
+          {t.account.viewDetails}
         </button>
       </div>
     </div>
@@ -96,6 +96,7 @@ function HistoryItem({ compra }) {
 export default function AccountClient() {
   const { user, logout } = useAuth();
   const router = useRouter();
+  const { t } = useI18n();
 
   const [loading, setLoading] = useState(false);
   const [purchases, setPurchases] = useState([]);
@@ -135,7 +136,7 @@ export default function AccountClient() {
           <div className="space-y-8">
             <div className="flex flex-col md:flex-row items-center md:items-start gap-6 pb-8 border-b border-slate-300 text-center md:text-left">
               <div className="w-24 h-24 rounded-full border border-slate-800 bg-slate-300 flex items-center justify-center overflow-hidden">
-                <User size={48} className="text-slate-500" />
+                <UserIcon size={48} className="text-slate-500" />
               </div>
               <div className="flex flex-col items-center md:items-start pt-1">
                 <h1 className="text-2xl font-bold text-black mb-1">{userProfile.nombre}</h1>
@@ -148,11 +149,11 @@ export default function AccountClient() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-                <h4 className="text-[10px] font-bold uppercase text-slate-400 mb-2 tracking-wider">Libro en préstamo</h4>
+                <h4 className="text-[10px] font-bold uppercase text-slate-400 mb-2 tracking-wider">{t.account.loanBook}</h4>
                 <p className="text-lg font-bold text-black">El olvido que seremos</p>
               </div>
               <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-                <h4 className="text-[10px] font-bold uppercase text-slate-400 mb-2 tracking-wider">Próximo coworking</h4>
+                <h4 className="text-[10px] font-bold uppercase text-slate-400 mb-2 tracking-wider">{t.account.nextCoworking}</h4>
                 <p className="text-lg font-bold text-black">Sala 01 - Reunión</p>
               </div>
             </div>
@@ -163,30 +164,32 @@ export default function AccountClient() {
         return (
           <div className="space-y-6">
             {loading ? (
-              <p className="text-text-secondary">Cargando compras...</p>
+              <p className="text-text-secondary">{t.account.loading}</p>
             ) : purchases && purchases.length > 0 ? (
               purchases.map((compra) => (
                 <HistoryItem key={compra.purchaseId || compra.id} compra={compra} />
               ))
             ) : (
-              <div className="text-text-secondary">Aún no tienes compras registradas.</div>
+              <div className="text-text-secondary">{t.account.noPurchases}</div>
             )}
           </div>
         );
 
       case "historial-reservas":
         return (
-          <div className="space-y-6">
+          <section className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center">
+                <Calendar size={20} />
+              </div>
+              <h2 className="text-xl font-bold text-slate-900">{t.account.reservations}</h2>
+            </div>
             <div className="text-center py-12">
               <div className="w-16 h-16 mx-auto mb-4 bg-brand-50 rounded-full flex items-center justify-center">
                 <svg className="w-8 h-8 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold text-text-primary mb-2">Historial de Reservas</h3>
-              <p className="text-text-secondary mb-6">Aquí podrás ver todas tus reservas.</p>
-
-            </div>
           </div>
         );
 

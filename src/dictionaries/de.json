@@ -32,5 +32,70 @@
   "user": {
     "hello": "Hallo",
     "guest": "Benutzer"
+  },
+  "cart": {
+    "empty_title": "Dein Warenkorb ist leer",
+    "empty_desc": "Erkunde die Bibliothek und füge deine Lieblingsbücher hinzu, um fortzufahren.",
+    "explore_btn": "Bibliothek erkunden",
+    "summary": "Kaufübersicht",
+    "title": "Warenkorb",
+    "subtitle": "Überprüfe die ausgewählten Produkte, bevor du den Kauf abschließt.",
+    "keep_shopping": "Weiter einkaufen",
+    "quantity": "Menge",
+    "subtotal": "Zwischensumme",
+    "total": "Gesamt",
+    "checkout_btn": "Zur Kasse"
+  },
+  "checkout": {
+    "title": "Kasse",
+    "back_cart": "Zurück zum Warenkorb",
+    "payment_details": "Zahlungsdetails",
+    "order_summary": "Bestellübersicht",
+    "pay_btn": "Jetzt bezahlen",
+    "success": "Erfolgreicher Kauf!",
+    "success_desc": "Ihre Bestellung wurde bearbeitet.",
+    "order": "Bestellung",
+    "completed": "Abgeschlossen",
+    "total_paid": "Bezahlter Gesamtbetrag",
+    "back_library": "Zurück",
+    "view_purchases": "Meine Einkäufe",
+    "empty_title": "Warenkorb leer",
+    "empty_desc": "Fügen Sie Bücher hinzu.",
+    "explore_catalog": "Katalog erkunden",
+    "billing_details": "Rechnungsdetails",
+    "fullname": "Vollständiger Name",
+    "email": "E-Mail",
+    "card_number": "Kartennummer",
+    "processing": "Verarbeitung..."
+  },
+  "coworking": {
+    "title": "Coworking Spaces",
+    "total_spaces": "Gesamte Plätze",
+    "available": "Verfügbar",
+    "occupied": "Belegt",
+    "filter_all": "Alle",
+    "filter_available": "Verfügbar",
+    "filter_occupied": "Belegt",
+    "book": "Buchen",
+    "next": "Weiter",
+    "confirm": "Bestätigen"
+  },
+  "account": {
+    "title": "Mein Konto",
+    "logout": "Abmelden",
+    "reservations": "Deine Reservierungen",
+    "purchases": "Deine Einkäufe"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "users": "Benutzer",
+    "stats": "Statistiken"
+  },
+  "book_detail": {
+    "author": "Autor",
+    "category": "Kategorie",
+    "year": "Veröffentlichungsjahr",
+    "add_cart": "In den Warenkorb",
+    "synopsis": "Zusammenfassung"
   }
 }

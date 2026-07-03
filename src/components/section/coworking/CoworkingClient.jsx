@@ -5,8 +5,10 @@ import CoworkingModal from "@/components/ui/coworking/CoworkingModal";
 import CoworkingSiteCard from "@/components/ui/coworking/CoworkingSiteCard";
 import BookingFlow from "@/components/ui/coworking/CoworkingModalBooking";
 import { motion, AnimatePresence } from "framer-motion";
+import { useI18n } from "@/context/TranslationsProvider";
 
 function CoworkingClient({ spaces = [] }) {
+  const { t } = useI18n();
 
   const [selectedSpace, setSelectedSpace] = useState(null);
   const [isBooking, setIsBooking] = useState(false);
@@ -17,7 +19,7 @@ function CoworkingClient({ spaces = [] }) {
     setIsBooking(false);
   };
 
-  // 🔥 FILTRADO + STATS + AGRUPACIÓN (todo en uno)
+ 
   const { grouped, stats } = useMemo(() => {
 
     const filtered =
@@ -53,32 +55,35 @@ function CoworkingClient({ spaces = [] }) {
       {/* HEADER */}
       <div className="mb-6 space-y-6">
         <h1 className="text-3xl font-bold">
-          Espacios de Coworking
+          {t.coworking.title}
         </h1>
 
         {/* STATS */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 ">
-          <StatCard title="Espacios totales" value={stats.total} />
-          <StatCard title="Disponibles" value={stats.disponibles} />
-          <StatCard title="Ocupados" value={stats.ocupados} />
+          <StatCard title={t.coworking.total_spaces} value={stats.total} />
+          <StatCard title={t.coworking.available} value={stats.disponibles} />
+          <StatCard title={t.coworking.occupied} value={stats.ocupados} />
         </div>
 
         {/* FILTROS */}
         <div className="flex gap-4">
-          {["Todos", "Disponible", "Ocupado"].map((estado) => (
-            <button
-              key={estado}
-              onClick={() => setEstadoFiltro(estado)}
-              className={`
-                px-4 py-2 rounded-full text-sm font-medium transition
-                ${estadoFiltro === estado
-                  ? "bg-slate-900 text-white"
-                  : "bg-slate-100 hover:bg-slate-200"}
-              `}
-            >
-              {estado}
-            </button>
-          ))}
+          {["Todos", "Disponible", "Ocupado"].map((estado) => {
+            const label = estado === "Todos" ? t.coworking.filter_all : estado === "Disponible" ? t.coworking.filter_available : t.coworking.filter_occupied;
+            return (
+              <button
+                key={estado}
+                onClick={() => setEstadoFiltro(estado)}
+                className={`
+                  px-4 py-2 rounded-full text-sm font-medium transition
+                  ${estadoFiltro === estado
+                    ? "bg-slate-900 text-white"
+                    : "bg-slate-100 hover:bg-slate-200"}
+                `}
+              >
+                {label}
+              </button>
+            );
+          })}
         </div>
       </div>
 

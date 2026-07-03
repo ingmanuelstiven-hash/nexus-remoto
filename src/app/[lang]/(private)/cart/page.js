@@ -3,9 +3,11 @@
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { getImageSrc } from "@/lib/getImageSrc";
+import { useI18n } from "@/context/TranslationsProvider";
 
 function CartPage() {
   const { cart, increaseQty, decreaseQty, removeFromCart } = useCart();
+  const { t } = useI18n();
 
   const total = cart.reduce(
     (acc, item) =>
@@ -23,12 +25,11 @@ function CartPage() {
           </div>
 
           <h2 className="text-2xl font-bold text-slate-950 mb-3">
-            Tu carrito está vacío
+            {t.cart.empty_title}
           </h2>
 
           <p className="text-sm leading-6 text-slate-600 mb-6">
-            Explora la librería y añade tus libros o revistas favoritas para
-            continuar con la compra.
+            {t.cart.empty_desc}
           </p>
 
           <Link
@@ -43,7 +44,7 @@ function CartPage() {
               hover:shadow-md
             "
           >
-            Explorar librería
+            {t.cart.explore_btn}
           </Link>
         </div>
       </section>
@@ -55,17 +56,17 @@ function CartPage() {
       <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 lg:py-10">
         <div className="mb-8">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-yellow-500 mb-2">
-            Resumen de compra
+            {t.cart.summary}
           </p>
 
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
             <div>
               <h1 className="text-3xl font-bold text-slate-950">
-                Carrito
+                {t.cart.title}
               </h1>
 
               <p className="mt-2 text-sm text-slate-600">
-                Revisa los productos seleccionados antes de finalizar tu compra.
+                {t.cart.subtitle}
               </p>
             </div>
 
@@ -73,7 +74,7 @@ function CartPage() {
               href="/library"
               className="text-sm font-semibold text-slate-600 underline-offset-4 hover:underline hover:text-slate-950"
             >
-              Seguir comprando
+              {t.cart.keep_shopping}
             </Link>
           </div>
         </div>
@@ -133,7 +134,7 @@ function CartPage() {
                   {/* QUANTITY */}
                   <div className="flex items-center justify-between gap-4 md:justify-center">
                     <span className="text-sm font-semibold text-slate-500 md:hidden">
-                      Cantidad
+                      {t.cart.quantity}
                     </span>
 
                     <div className="inline-flex items-center rounded-xl border border-slate-200 bg-slate-50 p-1">
@@ -171,7 +172,7 @@ function CartPage() {
                   <div className="flex items-center justify-between gap-4 md:min-w-[170px] md:justify-end">
                     <div className="text-left md:text-right">
                       <span className="block text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
-                        Subtotal
+                        {t.cart.subtotal}
                       </span>
 
                       <span className="block text-lg font-bold text-slate-950">
@@ -207,7 +208,7 @@ function CartPage() {
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between px-4 sm:px-6 lg:px-8 py-4">
           <div>
             <span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-              Total
+              {t.cart.total}
             </span>
 
             <span className="block text-2xl font-extrabold text-slate-950">
@@ -225,7 +226,7 @@ function CartPage() {
               hover:-translate-y-0.5 hover:shadow-md
             "
           >
-            Finalizar compra
+            {t.cart.checkout_btn}
           </Link>
         </div>
       </div>

@@ -5,11 +5,13 @@ import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
 import { CheckCircle2, ArrowRight, ShoppingBag, BookOpen } from "lucide-react";
+import { useI18n } from "@/context/TranslationsProvider";
 
 function CheckoutPage() {
   const router = useRouter();
   const { cart, clearCart } = useCart();
   const { user } = useAuth();
+  const { t } = useI18n();
 
   const [loading, setLoading] = useState(false);
   const [successData, setSuccessData] = useState(null);
@@ -126,17 +128,17 @@ function CheckoutPage() {
           </div>
 
           <h1 className="text-3xl font-extrabold text-slate-950 mb-3 tracking-tight">
-            ¡Compra Exitosa!
+            {t.checkout.success}
           </h1>
           <p className="text-sm text-slate-500 mb-6">
-            Tu pedido ha sido procesado y el inventario ha sido actualizado. El libro ha sido agregado a tu biblioteca.
+            {t.checkout.success_desc}
           </p>
 
           {/* Resumen de orden */}
           <div className="bg-slate-50 rounded-2xl p-5 mb-8 text-left border border-slate-100">
             <div className="flex justify-between text-xs text-slate-400 font-bold mb-3 uppercase tracking-wider">
-              <span>Orden #{successData.orderId}</span>
-              <span>Completado</span>
+              <span>{t.checkout.order} #{successData.orderId}</span>
+              <span>{t.checkout.completed}</span>
             </div>
             
             <div className="space-y-3 mb-4 border-b border-slate-200 pb-4">
@@ -149,7 +151,7 @@ function CheckoutPage() {
             </div>
 
             <div className="flex justify-between font-bold text-slate-950 text-base">
-              <span>Total Pagado</span>
+              <span>{t.checkout.total_paid}</span>
               <span>${successData.total.toLocaleString("es-ES")}</span>
             </div>
           </div>
@@ -165,14 +167,14 @@ function CheckoutPage() {
               className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-slate-950 px-6 py-3.5 text-sm font-semibold text-white hover:bg-slate-800 transition"
             >
               <BookOpen size={16} />
-              Volver a la Librería
+              {t.checkout.back_library}
             </button>
             <button
               onClick={() => router.push("/account")}
               className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-white border border-slate-300 px-6 py-3.5 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition"
             >
               <ShoppingBag size={16} />
-              Ver mis Compras
+              {t.checkout.view_purchases}
             </button>
           </div>
         </div>
@@ -185,15 +187,15 @@ function CheckoutPage() {
       <div className="min-h-[60vh] flex flex-col items-center justify-center px-4 bg-[#fcfcf9]">
         <div className="text-center space-y-4">
           <div className="text-5xl">🛒</div>
-          <h2 className="text-2xl font-bold text-slate-950">Tu carrito está vacío</h2>
+          <h2 className="text-2xl font-bold text-slate-950">{t.checkout.empty_title}</h2>
           <p className="text-sm text-slate-500 max-w-sm">
-            Agrega algunos libros desde el catálogo para iniciar el proceso de checkout.
+            {t.checkout.empty_desc}
           </p>
           <button
             onClick={() => router.push("/library")}
             className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-2.5 text-sm font-semibold text-white hover:bg-slate-800 transition"
           >
-            Explorar Catálogo
+            {t.checkout.explore_catalog}
             <ArrowRight size={16} />
           </button>
         </div>
@@ -203,12 +205,12 @@ function CheckoutPage() {
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-12 bg-[#fcfcf9] min-h-[85vh]">
-      <h1 className="text-3xl font-extrabold text-slate-950 mb-8 tracking-tight">Checkout</h1>
+      <h1 className="text-3xl font-extrabold text-slate-950 mb-8 tracking-tight">{t.checkout.title}</h1>
 
       <div className="grid md:grid-cols-[1fr_400px] gap-10">
         {/* Formulario de Pago */}
         <form onSubmit={handleSubmit} className="space-y-6 bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
-          <h2 className="text-lg font-bold text-slate-900 border-b pb-3 mb-6">Detalles de Facturación</h2>
+          <h2 className="text-lg font-bold text-slate-900 border-b pb-3 mb-6">{t.checkout.billing_details}</h2>
 
           {apiError && (
             <div className="p-4 rounded-2xl bg-red-50 border border-red-200 text-red-600 text-sm font-medium">
@@ -218,7 +220,7 @@ function CheckoutPage() {
 
           {/* Nombre completo */}
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-semibold text-slate-700">Nombre completo</label>
+            <label className="text-sm font-semibold text-slate-700">{t.checkout.fullname}</label>
             <input
               name="nombre"
               type="text"
@@ -235,7 +237,7 @@ function CheckoutPage() {
 
           {/* Correo */}
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-semibold text-slate-700">Correo electrónico</label>
+            <label className="text-sm font-semibold text-slate-700">{t.checkout.email}</label>
             <input
               name="email"
               type="email"
@@ -252,7 +254,7 @@ function CheckoutPage() {
 
           {/* Número de Tarjeta */}
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-semibold text-slate-700">Número de Tarjeta</label>
+            <label className="text-sm font-semibold text-slate-700">{t.checkout.card_number}</label>
             <input
               name="tarjeta"
               type="text"
@@ -274,13 +276,13 @@ function CheckoutPage() {
             disabled={loading}
             className="w-full mt-6 rounded-full bg-slate-950 px-6 py-4 text-base font-semibold text-white shadow-xl hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition"
           >
-            {loading ? "Procesando pago..." : `Pagar $${total.toLocaleString("es-ES")}`}
+            {loading ? t.checkout.processing : `${t.checkout.pay_btn} $${total.toLocaleString("es-ES")}`}
           </button>
         </form>
 
         {/* Resumen del Pedido */}
         <aside className="bg-[#f3f4f1]/50 border border-slate-200 rounded-3xl p-6 h-fit shadow-sm">
-          <h2 className="font-extrabold text-lg text-slate-900 mb-4 tracking-tight">Resumen de Compra</h2>
+          <h2 className="font-extrabold text-lg text-slate-900 mb-4 tracking-tight">{t.checkout.order_summary}</h2>
 
           <div className="space-y-4 text-sm mb-6 max-h-[300px] overflow-y-auto pr-2">
             {cart.map((item) => (

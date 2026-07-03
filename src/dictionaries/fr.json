@@ -32,5 +32,70 @@
   "user": {
     "hello": "Bonjour",
     "guest": "Utilisateur"
+  },
+  "cart": {
+    "empty_title": "Votre panier est vide",
+    "empty_desc": "Explorez la bibliothèque et ajoutez vos livres préférés pour continuer.",
+    "explore_btn": "Explorer la bibliothèque",
+    "summary": "Résumé de l'achat",
+    "title": "Panier",
+    "subtitle": "Vérifiez les produits sélectionnés avant de finaliser votre achat.",
+    "keep_shopping": "Continuer vos achats",
+    "quantity": "Quantité",
+    "subtotal": "Sous-total",
+    "total": "Total",
+    "checkout_btn": "Passer à la caisse"
+  },
+  "checkout": {
+    "title": "Paiement",
+    "back_cart": "Retour au panier",
+    "payment_details": "Détails de paiement",
+    "order_summary": "Résumé de la commande",
+    "pay_btn": "Payer maintenant",
+    "success": "Achat réussi !",
+    "success_desc": "Votre commande a été traitée.",
+    "order": "Commande",
+    "completed": "Terminé",
+    "total_paid": "Total Payé",
+    "back_library": "Retour",
+    "view_purchases": "Mes Achats",
+    "empty_title": "Panier vide",
+    "empty_desc": "Ajoutez des livres.",
+    "explore_catalog": "Catalogue",
+    "billing_details": "Détails de facturation",
+    "fullname": "Nom complet",
+    "email": "Email",
+    "card_number": "Numéro de carte",
+    "processing": "Traitement..."
+  },
+  "coworking": {
+    "title": "Espaces de Coworking",
+    "total_spaces": "Espaces totaux",
+    "available": "Disponibles",
+    "occupied": "Occupés",
+    "filter_all": "Tous",
+    "filter_available": "Disponible",
+    "filter_occupied": "Occupé",
+    "book": "Réserver",
+    "next": "Suivant",
+    "confirm": "Confirmer"
+  },
+  "account": {
+    "title": "Mon Compte",
+    "logout": "Se déconnecter",
+    "reservations": "Vos réservations",
+    "purchases": "Vos achats"
+  },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "users": "Utilisateurs",
+    "stats": "Statistiques"
+  },
+  "book_detail": {
+    "author": "Auteur",
+    "category": "Catégorie",
+    "year": "Année de publication",
+    "add_cart": "Ajouter au panier",
+    "synopsis": "Synopsis"
   }
 }

@@ -4,10 +4,12 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Stepper from "@/components/ui/Stepper";
 import { useLoader } from "@/hooks/useLoader";
+import { useI18n } from "@/context/TranslationsProvider";
 
 function BookingFlow({ space, onClose, selectedHour }) {
 
   const router = useRouter();
+  const { t } = useI18n();
 
   const [step, setStep] = useState(selectedHour ? 2 : 1);
 
@@ -122,7 +124,7 @@ function BookingFlow({ space, onClose, selectedHour }) {
                 onClick={() => setStep(2)}
                 className="flex-1 bg-[#0f172a] text-white font-bold py-3.5 rounded-2xl hover:bg-black transition-colors disabled:opacity-50"
               >
-                Siguiente
+                {t.coworking.next}
               </button>
             </div>
 
@@ -195,7 +197,7 @@ function BookingFlow({ space, onClose, selectedHour }) {
                 onClick={handleConfirm} 
                 className="flex-1 bg-[#0f172a] text-white font-bold py-3.5 rounded-2xl hover:bg-black transition-colors"
               >
-                Confirmar Reserva
+                {t.coworking.confirm}
               </button>
             </div>
 

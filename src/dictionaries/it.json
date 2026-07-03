@@ -32,5 +32,70 @@
   "user": {
     "hello": "Ciao",
     "guest": "Utente"
+  },
+  "cart": {
+    "empty_title": "Il tuo carrello è vuoto",
+    "empty_desc": "Esplora la libreria e aggiungi i tuoi libri preferiti per continuare.",
+    "explore_btn": "Esplora la libreria",
+    "summary": "Riepilogo acquisto",
+    "title": "Carrello",
+    "subtitle": "Controlla i prodotti selezionati prima di completare l'acquisto.",
+    "keep_shopping": "Continua lo shopping",
+    "quantity": "Quantità",
+    "subtotal": "Totale parziale",
+    "total": "Totale",
+    "checkout_btn": "Vai alla cassa"
+  },
+  "checkout": {
+    "title": "Pagamento",
+    "back_cart": "Torna al carrello",
+    "payment_details": "Dettagli di pagamento",
+    "order_summary": "Riepilogo ordine",
+    "pay_btn": "Paga ora",
+    "success": "Acquisto Completato!",
+    "success_desc": "Il tuo ordine è stato elaborato.",
+    "order": "Ordine",
+    "completed": "Completato",
+    "total_paid": "Totale Pagato",
+    "back_library": "Torna alla Libreria",
+    "view_purchases": "I miei Acquisti",
+    "empty_title": "Carrello vuoto",
+    "empty_desc": "Aggiungi libri.",
+    "explore_catalog": "Esplora",
+    "billing_details": "Dettagli di fatturazione",
+    "fullname": "Nome completo",
+    "email": "Email",
+    "card_number": "Numero di carta",
+    "processing": "Elaborazione..."
+  },
+  "coworking": {
+    "title": "Spazi di Coworking",
+    "total_spaces": "Spazi totali",
+    "available": "Disponibili",
+    "occupied": "Occupati",
+    "filter_all": "Tutti",
+    "filter_available": "Disponibile",
+    "filter_occupied": "Occupato",
+    "book": "Prenota",
+    "next": "Avanti",
+    "confirm": "Conferma"
+  },
+  "account": {
+    "title": "Il mio account",
+    "logout": "Esci",
+    "reservations": "Le tue prenotazioni",
+    "purchases": "I tuoi acquisti"
+  },
+  "dashboard": {
+    "title": "Pannello di controllo",
+    "users": "Utenti",
+    "stats": "Statistiche"
+  },
+  "book_detail": {
+    "author": "Autore",
+    "category": "Categoria",
+    "year": "Anno di pubblicazione",
+    "add_cart": "Aggiungi al carrello",
+    "synopsis": "Sinossi"
   }
 }

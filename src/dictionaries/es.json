@@ -32,5 +32,70 @@
   "user": {
     "hello": "Hola",
     "guest": "Usuario"
+  },
+  "cart": {
+    "empty_title": "Tu carrito está vacío",
+    "empty_desc": "Explora la librería y añade tus libros o revistas favoritas para continuar con la compra.",
+    "explore_btn": "Explorar librería",
+    "summary": "Resumen de compra",
+    "title": "Carrito",
+    "subtitle": "Revisa los productos seleccionados antes de finalizar tu compra.",
+    "keep_shopping": "Seguir comprando",
+    "quantity": "Cantidad",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "checkout_btn": "Finalizar compra"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "back_cart": "Volver al carrito",
+    "payment_details": "Detalles de pago",
+    "order_summary": "Resumen del pedido",
+    "pay_btn": "Pagar ahora",
+    "success": "¡Compra Exitosa!",
+    "success_desc": "Tu pedido ha sido procesado y el inventario ha sido actualizado.",
+    "order": "Orden",
+    "completed": "Completado",
+    "total_paid": "Total Pagado",
+    "back_library": "Volver a la Librería",
+    "view_purchases": "Ver mis Compras",
+    "empty_title": "Tu carrito está vacío",
+    "empty_desc": "Agrega algunos libros desde el catálogo para iniciar el proceso de checkout.",
+    "explore_catalog": "Explorar Catálogo",
+    "billing_details": "Detalles de Facturación",
+    "fullname": "Nombre completo",
+    "email": "Correo electrónico",
+    "card_number": "Número de Tarjeta",
+    "processing": "Procesando pago..."
+  },
+  "coworking": {
+    "title": "Espacios de Coworking",
+    "total_spaces": "Espacios totales",
+    "available": "Disponibles",
+    "occupied": "Ocupados",
+    "filter_all": "Todos",
+    "filter_available": "Disponible",
+    "filter_occupied": "Ocupado",
+    "book": "Reservar",
+    "next": "Siguiente",
+    "confirm": "Confirmar"
+  },
+  "account": {
+    "title": "Mi Cuenta",
+    "logout": "Cerrar sesión",
+    "reservations": "Tus reservas",
+    "purchases": "Tus compras"
+  },
+  "dashboard": {
+    "title": "Panel de Control",
+    "users": "Usuarios",
+    "stats": "Estadísticas"
+  },
+  "book_detail": {
+    "author": "Autor",
+    "category": "Categoría",
+    "year": "Año de publicación",
+    "add_cart": "Añadir al carrito",
+    "synopsis": "Sinopsis"
   }
 }
