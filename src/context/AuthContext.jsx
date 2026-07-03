@@ -23,12 +23,12 @@ export const AuthProvider = ({ children }) => {
 
   const login = () => {
     // Ruta interceptada por el proxy de Auth0
-    router.push("/auth/login");
+    window.location.href = "/auth/login";
   };
 
   const logout = () => {
     // Ruta interceptada por el proxy de Auth0
-    router.push("/auth/logout");
+    window.location.href = "/auth/logout";
   };
 
   return (

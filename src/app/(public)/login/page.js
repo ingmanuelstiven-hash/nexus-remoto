@@ -8,7 +8,7 @@ function Login() {
 
   const handleGoogleLogin = () => {
     // Redirigir al flujo oficial de Auth0
-    router.push("/auth/login");
+    window.location.href = "/auth/login";
   };
 
   return (
