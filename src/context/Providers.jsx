@@ -1,14 +1,17 @@
 "use client";
 
+import { Auth0Provider } from "@auth0/nextjs-auth0/client";
 import { AuthProvider } from "./AuthContext";
 import { CartProvider } from "./CartContext";
 
 export default function Providers({ children }) {
   return (
-    <AuthProvider>
+    <Auth0Provider>
+      <AuthProvider>
         <CartProvider>
           {children}
         </CartProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </Auth0Provider>
   );
 }

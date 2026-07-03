@@ -1,11 +1,14 @@
 import { apiClient } from "./apiClient";
 
+// Definición de todas las rutas de API del proyecto
 export const apiEndpoints = {
-  // 🔥 usamos dataset real, NO /login
+  // Lista de usuarios registrada en la BD
   getUsers: () => apiClient("/users"),
 
+  // Catálogo completo de libros
   getProductos: () => apiClient(`/itemslib`),
 
+  // Libros filtrados por categoría o año
   getLibrosFiltrados: (filtros = {}) => {
     const clean = Object.fromEntries(
       Object.entries(filtros).filter(([_, v]) => v)
@@ -14,11 +17,15 @@ export const apiEndpoints = {
     return apiClient(`/itemslib?${params}`);
   },
 
+  // Obtener un libro por su ID único
   getLibroPorId: (id) => apiClient(`/itemslib/${id}`),
 
-  getTop10: () => apiClient(`/itemslib/top10?masVendido=true`),
+  // Libros más vendidos (Top 10)
+  getTop10: () => apiClient(`/itemslib?masVendido=true`),
 
+  // Espacios de coworking disponibles
   getCoworkingSpaces: () => apiClient(`/coworkingnew/spaces`),
 
+  // Historial de compras de un usuario
   getPurchasedItems: (id) => apiClient(`/compras?userId=${id}`),
 };

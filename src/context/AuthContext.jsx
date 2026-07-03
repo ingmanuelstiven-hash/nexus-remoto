@@ -1,83 +1,34 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
-import { apiEndpoints } from "@/lib/apiEndpoints";
+import { createContext, useContext } from "react";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import { useRouter } from "next/navigation";
 
 export const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [mounted, setMounted] = useState(false);
+  // Obtenemos los datos del usuario logueado desde el SDK de Auth0
+  const { user: auth0User, error, isLoading } = useUser();
+  const router = useRouter();
 
-  // 🔹 hidrata sesión
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem("user");
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (parsed?.id) setUser(parsed);
-        else localStorage.removeItem("user");
+  // Mapeo de campos para mantener compatibilidad con las vistas de la app
+  const user = auth0User
+    ? {
+        id: auth0User.sub,
+        nombre: auth0User.name || auth0User.nickname || "Usuario",
+        correo: auth0User.email,
+        imagen: auth0User.picture,
       }
-    } catch {
-      localStorage.removeItem("user");
-    } finally {
-      setMounted(true);
-    }
-  }, []);
+    : null;
 
-  // 🔥 LOGIN basado en dataset
-  const login = async (correo, contrasena) => {
-    try {
-      const res = await apiEndpoints.getUsers();
-      console.log("API RESPONSE:", res);
-
-      // 🔥 normalización robusta
-      let users = [];
-      if (Array.isArray(res)) users = res;
-      else if (Array.isArray(res?.data)) users = res.data;
-      else if (Array.isArray(res?.users)) users = res.users;
-      else if (res && typeof res === "object") users = [res];
-
-      if (!users.length) {
-        throw new Error("No hay usuarios");
-      }
-
-      // 🔥 comparación segura
-      const foundUser = users.find((u) => {
-        const email = (u.correo || u.email || "").trim().toLowerCase();
-        const pass = (u.contrasena || u.password || "").trim();
-
-        return (
-          email === correo.trim().toLowerCase() &&
-          pass === contrasena.trim()
-        );
-      });
-
-      if (!foundUser) {
-        throw new Error("Credenciales incorrectas");
-      }
-
-      // 🔥 sin contraseña
-      const safeUser = {
-        id: foundUser.id,
-        nombre: foundUser.nombre || "Usuario",
-        correo: foundUser.correo || foundUser.email,
-      };
-
-      setUser(safeUser);
-      localStorage.setItem("user", JSON.stringify(safeUser));
-
-      return safeUser;
-
-    } catch (err) {
-      console.error("Login error:", err);
-      throw new Error("Correo o contraseña incorrectos");
-    }
+  const login = () => {
+    // Ruta interceptada por el proxy de Auth0
+    router.push("/auth/login");
   };
 
   const logout = () => {
-    setUser(null);
-    localStorage.removeItem("user");
+    // Ruta interceptada por el proxy de Auth0
+    router.push("/auth/logout");
   };
 
   return (
@@ -86,8 +37,9 @@ export const AuthProvider = ({ children }) => {
         user,
         login,
         logout,
-        mounted,
+        mounted: !isLoading,
         isAuthenticated: !!user,
+        error
       }}
     >
       {children}

@@ -20,30 +20,10 @@ function BookCard({ libro }) {
   };
 
   return (
-    <article
-      className="
-        relative h-full
-        glass-card
-        p-4
-        flex flex-col
-        transition-all duration-300
-        hover:-translate-y-1
-        hover:shadow-xl
-        hover:border-brand-500/40
-      "
-    >
+    <article className="relative h-full glass-card p-4 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-brand-500/40">
       {/* BADGE */}
       {libro.masVendido && (
-        <span
-          className="
-            absolute top-3 left-3 z-10
-            px-2.5 py-1
-            rounded-full
-            text-[11px] font-bold
-            bg-yellow-300 text-slate-950
-            shadow-sm
-          "
-        >
+        <span className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-full text-[11px] font-bold bg-yellow-300 text-slate-950 shadow-sm">
           Más vendido
         </span>
       )}
@@ -51,14 +31,7 @@ function BookCard({ libro }) {
       {/* IMAGE */}
       <div
         onClick={() => router.push(`/library/${libro.id}`)}
-        className="
-          relative w-full
-          h-[210px]
-          mb-4
-          rounded-xl overflow-hidden
-          cursor-pointer
-          bg-slate-50
-        "
+        className="relative w-full h-[210px] mb-4 rounded-xl overflow-hidden cursor-pointer bg-slate-50"
       >
         <BookImage
           src={libro.imagen}
@@ -70,16 +43,7 @@ function BookCard({ libro }) {
       {/* CONTENT */}
       <div className="flex flex-1 flex-col">
         {/* TITLE */}
-        <h3
-          className="
-            min-h-[2.6rem]
-            font-semibold
-            text-sm
-            leading-snug
-            text-slate-950
-            line-clamp-2
-          "
-        >
+        <h3 className="min-h-[2.6rem] font-semibold text-sm leading-snug text-slate-950 line-clamp-2">
           {libro.titulo}
         </h3>
 
@@ -95,7 +59,7 @@ function BookCard({ libro }) {
 
         {/* PRICE */}
         <p className="mt-3 text-base font-bold text-slate-950">
-          ${libro.precio?.toLocaleString()}
+          ${Number(libro.precio || 0).toLocaleString('es-ES')}
         </p>
 
         {/* ACTIONS */}
@@ -103,12 +67,7 @@ function BookCard({ libro }) {
           {/* BUTTON DETAIL */}
           <button
             onClick={() => router.push(`/library/${libro.id}`)}
-            className="
-              btn-primary
-              w-full py-2
-              text-xs font-bold
-              rounded-xl
-            "
+            className="btn-primary w-full py-2 text-xs font-bold rounded-xl"
           >
             Ver detalle
           </button>
@@ -116,12 +75,7 @@ function BookCard({ libro }) {
           {/* BUTTON CART */}
           <button
             onClick={handleAddToCart}
-            className="
-              btn-primary
-              w-full py-2
-              text-xs font-bold
-              rounded-xl
-            "
+            className="btn-primary w-full py-2 text-xs font-bold rounded-xl"
           >
             Añadir al carrito
           </button>

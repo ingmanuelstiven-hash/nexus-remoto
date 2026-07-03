@@ -1,17 +1,28 @@
-const BASE_URL = "https://mock.apidog.com/m1/1129812-1121696-default";
+// Cliente HTTP básico para pegarle a los endpoints locales
+const getBaseUrl = () => {
+  if (typeof window !== "undefined") {
+    // En el navegador usamos rutas relativas
+    return "/api";
+  }
+  // En el servidor (SSR) necesitamos la URL absoluta
+  const appBaseUrl = process.env.APP_BASE_URL || "http://localhost:3000";
+  return `${appBaseUrl}/api`;
+};
 
 export async function apiClient(endpoint, options = {}) {
-  const res = await fetch(`${BASE_URL}${endpoint}`, {
+  const url = `${getBaseUrl()}${endpoint}`;
+
+  const res = await fetch(url, {
     headers: {
       "Content-Type": "application/json",
     },
-    cache: "no-store", // 🔥 evita cache de Apidog
+    cache: "no-store", // Para tener datos frescos siempre
     ...options,
   });
 
   if (!res.ok) {
-    const text = await res.text();
-    throw new Error(text || `API Error: ${res.status}`);
+    const errorText = await res.text();
+    throw new Error(errorText || `Error de API: ${res.status}`);
   }
 
   return res.json();

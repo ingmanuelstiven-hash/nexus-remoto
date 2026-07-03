@@ -12,7 +12,7 @@ import HeaderMobile from "./HeaderMobile";
 
 function Header() {
   const router = useRouter();
-  const { user, mounted } = useAuth();
+  const { user, mounted, logout } = useAuth();
   const { cart } = useCart();
 
   const [openCart, setOpenCart] = useState(false);
@@ -90,6 +90,7 @@ function Header() {
         user={user}
         totalItems={totalItems}
         onClose={() => setOpenMobile(false)}
+        onLogout={logout}
       />
     </header>
   );
