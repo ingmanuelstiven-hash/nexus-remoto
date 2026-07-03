@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
+import { useI18n } from "@/context/TranslationsProvider";
 
 import HeaderCart from "./HeaderCart";
 import HeaderUser from "./HeaderUser";
@@ -14,6 +15,7 @@ function Header() {
   const router = useRouter();
   const { user, mounted, logout } = useAuth();
   const { cart } = useCart();
+  const t = useI18n();
 
   const [openCart, setOpenCart] = useState(false);
   const [openAccount, setOpenAccount] = useState(false);
@@ -24,7 +26,7 @@ function Header() {
 
   const totalItems = cart.reduce((acc, i) => acc + i.cantidad, 0);
 
-  // ✅ hooks SIEMPRE arriba
+  //  hooks SIEMPRE arriba
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (cartRef.current && !cartRef.current.contains(e.target)) {
@@ -47,19 +49,21 @@ function Header() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
         {/* LOGO */}
-        <button onClick={() => router.push("/dashboard")}>
-          <img src="/img/nexus.svg" alt="Nexus" className="w-20" />
-        </button>
+        <div className="flex items-center gap-4">
+          <button onClick={() => router.push("/dashboard")}>
+            <img src="/img/nexus.svg" alt="Nexus" className="w-20" />
+          </button>
+        </div>
 
         {/* DESKTOP */}
         <nav className="hidden md:flex items-center gap-6 text-sm">
 
-          {!user && <Link href="/login">Login</Link>}
+          {!user && <Link href="/login">{t.navigation.login}</Link>}
 
           {user && (
             <>
-              <Link href="/library">Librería</Link>
-              <Link href="/coworking">Coworking</Link>
+              <Link href="/library">{t.navigation.library}</Link>
+              <Link href="/coworking">{t.navigation.coworking}</Link>
 
               <HeaderCart
                 cartRef={cartRef}
@@ -76,6 +80,15 @@ function Header() {
               />
             </>
           )}
+
+          {/* SELECTOR DE IDIOMA (Derecha) */}
+          <div className="flex gap-1.5 text-xs font-bold text-slate-500 bg-slate-100 px-3 py-1.5 rounded-full ml-4">
+            <a href="/es" className="hover:text-brand-600 transition">ES</a>|
+            <a href="/en" className="hover:text-brand-600 transition">EN</a>|
+            <a href="/fr" className="hover:text-brand-600 transition">FR</a>|
+            <a href="/it" className="hover:text-brand-600 transition">IT</a>|
+            <a href="/de" className="hover:text-brand-600 transition">DE</a>
+          </div>
         </nav>
 
         {/* MOBILE BTN */}

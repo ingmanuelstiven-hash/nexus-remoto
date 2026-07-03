@@ -6,9 +6,11 @@ import Link from "next/link";
 import { LogOut } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLockBodyScroll } from "@/hooks/useLockBodyScroll";
+import { useI18n } from "@/context/TranslationsProvider";
 
 function HeaderMobile({ open, user, totalItems, onClose, onLogout }) {
   const [mounted, setMounted] = useState(false);
+  const t = useI18n();
 
   useLockBodyScroll(open);
 
@@ -73,21 +75,30 @@ function HeaderMobile({ open, user, totalItems, onClose, onLogout }) {
             {/* NAV */}
             <nav className="flex-1 px-6 py-6 flex flex-col gap-4 text-sm">
 
+              {/* Language Selector Mobile */}
+              <div className="flex gap-2 text-xs font-bold text-slate-500 bg-slate-100 px-3 py-2 rounded-lg justify-center mb-2">
+                <a href="/es" className="hover:text-brand-600">ES</a>|
+                <a href="/en" className="hover:text-brand-600">EN</a>|
+                <a href="/fr" className="hover:text-brand-600">FR</a>|
+                <a href="/it" className="hover:text-brand-600">IT</a>|
+                <a href="/de" className="hover:text-brand-600">DE</a>
+              </div>
+
               {!user && (
                 <Link href="/login" onClick={onClose}>
-                  Login
+                  {t.navigation.login}
                 </Link>
               )}
 
               {user && (
                 <>
-                  <Link href="/library" onClick={onClose}>📚 Librería</Link>
-                  <Link href="/coworking" onClick={onClose}>💼 Coworking</Link>
+                  <Link href="/library" onClick={onClose}>📚 {t.navigation.library}</Link>
+                  <Link href="/coworking" onClick={onClose}>💼 {t.navigation.coworking}</Link>
 
                   <Link href="/cart" onClick={onClose}>
-                    🛒 Carrito ({totalItems})
+                    🛒 {t.navigation.cart} ({totalItems})
                   </Link>
-                  <Link href="/account" onClick={onClose}>👤 Mi cuenta</Link>
+                  <Link href="/account" onClick={onClose}>👤 {t.navigation.account}</Link>
                   
                   <div className="border-t border-border-default my-2"></div>
                   
@@ -98,7 +109,7 @@ function HeaderMobile({ open, user, totalItems, onClose, onLogout }) {
                     }} 
                     className="flex items-center gap-2 text-red-500 font-medium text-left mt-2"
                   >
-                    <LogOut size={18} /> Cerrar sesión
+                    <LogOut size={18} /> {t.navigation.logout}
                   </button>
                 </>
               )}

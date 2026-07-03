@@ -1,0 +1,16 @@
+{
+  "navigation": {
+    "home": "Home",
+    "library": "Library",
+    "coworking": "Coworking",
+    "cart": "Cart",
+    "account": "My Account",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "home": {
+    "hero_title": "Discover, Learn and Connect",
+    "hero_subtitle": "The space designed to enhance your university experience.",
+    "top_books": "Top 10 best sellers"
+  }
+}

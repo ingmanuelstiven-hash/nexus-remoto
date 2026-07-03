@@ -1,0 +1,16 @@
+{
+  "navigation": {
+    "home": "Home",
+    "library": "Libreria",
+    "coworking": "Coworking",
+    "cart": "Carrello",
+    "account": "Il mio Account",
+    "login": "Accedi",
+    "logout": "Esci"
+  },
+  "home": {
+    "hero_title": "Scopri, Impara e Connetti",
+    "hero_subtitle": "Lo spazio progettato per migliorare la tua esperienza universitaria.",
+    "top_books": "I 10 più venduti"
+  }
+}

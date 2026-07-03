@@ -1,0 +1,16 @@
+{
+  "navigation": {
+    "home": "Startseite",
+    "library": "Bibliothek",
+    "coworking": "Coworking",
+    "cart": "Warenkorb",
+    "account": "Mein Konto",
+    "login": "Anmelden",
+    "logout": "Abmelden"
+  },
+  "home": {
+    "hero_title": "Entdecken, Lernen und Verbinden",
+    "hero_subtitle": "Der Raum, der entwickelt wurde, um Ihre Universitätserfahrung zu verbessern.",
+    "top_books": "Top 10 Bestseller"
+  }
+}
