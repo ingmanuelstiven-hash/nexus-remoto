@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthContext";
 import BookImage from "@/components/ui/library/BookImage";
 
 function BookDetailClient({ book }) {
   const { addToCart } = useCart();
+  const { isAuthenticated, login } = useAuth();
   const [cantidad, setCantidad] = useState(1);
 
   if (!book) {
@@ -17,6 +19,11 @@ function BookDetailClient({ book }) {
   }
 
   const handleAddToCart = () => {
+    if (!isAuthenticated) {
+      login();
+      return;
+    }
+
     addToCart(
       {
         ...book,

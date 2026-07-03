@@ -68,14 +68,10 @@ export default function Footer() {
           </h2>
 
           <div className="rounded-2xl bg-slate-800/60 p-4 text-sm text-slate-200">
-            Awwwards Honors
+       Idea Inovadora 2026
           </div>
 
-          <div className="rounded-2xl bg-slate-800/60 p-4 text-sm text-slate-200">
-            <span className="text-slate-400 text-xs">FEATURED ON</span>
-            <br />
-            <strong className="text-white">PRODUCT HUNT</strong>
-          </div>
+        
         </section>
       </div>
     </footer>

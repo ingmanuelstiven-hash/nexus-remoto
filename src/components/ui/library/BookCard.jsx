@@ -2,14 +2,21 @@
 
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthContext";
 import BookImage from "./BookImage";
 
 function BookCard({ libro }) {
   const router = useRouter();
   const { addToCart } = useCart();
+  const { isAuthenticated, login } = useAuth();
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
+
+    if (!isAuthenticated) {
+      login();
+      return;
+    }
 
     const itemParaCarrito = {
       ...libro,

@@ -2,10 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { useScrollAnimation } from "../../../hooks/useScrollAnimation";
+import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
 
 function Services() {
   const header = useScrollAnimation();
   const list = useScrollAnimation();
+  
+  const { isAuthenticated, login } = useAuth();
+  const router = useRouter();
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [visibleIndex, setVisibleIndex] = useState(-1);
@@ -21,6 +26,10 @@ function Services() {
       title: "Espacios de Coworking",
       desc: "Áreas modernas y tranquilas para estudiar, crear y trabajar cómodamente.",
       image: "/img/home-services/2.jpg",
+      action: {
+        label: "Conocer espacio",
+        path: "/coworking"
+      }
     },
     {
       title: "Eventos",
@@ -80,7 +89,7 @@ function Services() {
                 const isActive = i === activeIndex;
 
                 return (
-                  <button
+                  <div
                     key={service.title}
                     onClick={() => setActiveIndex(i)}
                     className={`
@@ -100,7 +109,28 @@ function Services() {
                     <p className="text-slate-600 text-sm leading-relaxed">
                       {service.desc}
                     </p>
-                  </button>
+                    {service.action && isActive && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (!isAuthenticated) {
+                            login();
+                          } else {
+                            router.push(service.action.path);
+                          }
+                        }}
+                        className="
+                          mt-4 inline-flex items-center justify-center
+                          rounded-xl bg-slate-950 px-5 py-2.5
+                          text-sm font-bold text-white
+                          transition-all duration-300
+                          hover:-translate-y-0.5 hover:bg-yellow-300 hover:text-slate-950 hover:shadow-md
+                        "
+                      >
+                        {service.action.label}
+                      </button>
+                    )}
+                  </div>
                 );
               })}
             </div>
