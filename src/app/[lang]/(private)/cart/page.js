@@ -7,7 +7,7 @@ import { useI18n } from "@/context/TranslationsProvider";
 
 function CartPage() {
   const { cart, increaseQty, decreaseQty, removeFromCart } = useCart();
-  const { t } = useI18n();
+  const t = useI18n();
 
   const total = cart.reduce(
     (acc, item) =>
@@ -86,7 +86,7 @@ function CartPage() {
             const subtotal = precio * cantidad;
 
             const etiqueta =
-              item.tipo === "cafeteria" ? "Cafetería" : "Libro";
+              item.tipo === "cafeteria" ? t.cart.type_coffee : t.cart.type_book;
 
             return (
               <li
@@ -190,8 +190,8 @@ function CartPage() {
                         transition-all duration-300
                         hover:bg-red-500 hover:text-white hover:shadow-sm
                       "
-                      aria-label={`Eliminar ${item.titulo} del carrito`}
-                      title="Eliminar"
+                      aria-label={`${t.cart.remove} ${item.titulo}`}
+                      title={t.cart.remove}
                     >
                       ×
                     </button>
@@ -235,3 +235,4 @@ function CartPage() {
 }
 
 export default CartPage;
+// FORCE_REBUILD_1783124179837

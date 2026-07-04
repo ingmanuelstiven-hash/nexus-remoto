@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import { useScrollAnimation } from "../../../hooks/useScrollAnimation";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
+import { useI18n } from "@/context/TranslationsProvider";
 
 function Services() {
+  const t = useI18n();
   const header = useScrollAnimation();
   const list = useScrollAnimation();
   
@@ -18,22 +20,22 @@ function Services() {
 
   const services = [
     {
-      title: "Librería Universitaria",
-      desc: "Material académico y literario para apoyar tu aprendizaje y proyectos.",
+      title: t.services.lib_title,
+      desc: t.services.lib_desc,
       image: "/img/home-services/1.jpg",
     },
     {
-      title: "Espacios de Coworking",
-      desc: "Áreas modernas y tranquilas para estudiar, crear y trabajar cómodamente.",
+      title: t.services.cow_title,
+      desc: t.services.cow_desc,
       image: "/img/home-services/2.jpg",
       action: {
-        label: "Conocer espacio",
+        label: t.coworking.title,
         path: "/coworking"
       }
     },
     {
-      title: "Eventos",
-      desc: "Charlas, talleres y actividades que impulsan tu desarrollo y creatividad.",
+      title: t.services.events_title,
+      desc: t.services.events_desc,
       image: "/img/home-services/3.jpg",
     },
   ];
@@ -70,10 +72,10 @@ function Services() {
         `}
       >
         <h2 className="title-h2">
-          Servicios Principales
+          {t.services.title}
         </h2>
         <p className="mt-3 text-slate-600 max-w-2xl animate-fade-up stagger-1">
-          Elige cómo quieres aprender, crear y conectar en Nexus.
+          {t.services.desc}
         </p>
       </header>
 
@@ -161,3 +163,4 @@ function Services() {
 }
 
 export default Services;
+// FORCE_REBUILD_1783124179835

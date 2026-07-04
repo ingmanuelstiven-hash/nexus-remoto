@@ -9,7 +9,7 @@ import { useI18n } from "@/context/TranslationsProvider";
 function BookDetailClient({ book }) {
   const { addToCart } = useCart();
   const { isAuthenticated, login } = useAuth();
-  const { t } = useI18n();
+  const t = useI18n();
   const [cantidad, setCantidad] = useState(1);
 
   if (!book) {
@@ -197,3 +197,4 @@ function BookDetailClient({ book }) {
 }
 
 export default BookDetailClient;
+// FORCE_REBUILD_1783124179837

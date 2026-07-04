@@ -9,7 +9,7 @@ import { useI18n } from "@/context/TranslationsProvider";
 function BookingFlow({ space, onClose, selectedHour }) {
 
   const router = useRouter();
-  const { t } = useI18n();
+  const t = useI18n();
 
   const [step, setStep] = useState(selectedHour ? 2 : 1);
 
@@ -236,3 +236,4 @@ function BookingFlow({ space, onClose, selectedHour }) {
 }
 
 export default BookingFlow;
+// FORCE_REBUILD_1783124179838

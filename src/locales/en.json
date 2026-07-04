@@ -44,7 +44,13 @@
     "quantity": "Quantity",
     "subtotal": "Subtotal",
     "total": "Total",
-    "checkout_btn": "Checkout"
+    "checkout_btn": "Checkout",
+    "remove": "Remove",
+    "type_coffee": "Cafeteria",
+    "type_book": "Book",
+    "empty_confirm": "Empty cart?",
+    "empty_btn": "Empty",
+    "view_cart": "View cart"
   },
   "checkout": {
     "title": "Checkout",
@@ -84,7 +90,15 @@
     "title": "My Account",
     "logout": "Log out",
     "reservations": "Your reservations",
-    "purchases": "Your purchases"
+    "purchases": "Your purchases",
+    "my_profile": "My Profile",
+    "activity": "ACTIVITY",
+    "settings": "SETTINGS",
+    "preferences": "Preferences",
+    "acc_prefs": "Account Preferences",
+    "notifications": "Notifications",
+    "loan_reminders": "Loan reminders",
+    "construction": "Section under construction."
   },
   "dashboard": {
     "title": "Dashboard",
@@ -97,5 +111,49 @@
     "year": "Year of publication",
     "add_cart": "Add to cart",
     "synopsis": "Synopsis"
-  }
+  },
+  "footer": {
+    "about": "NEXUS",
+    "desc": "Nexus supports the university community with digital resources and coworking spaces designed for the future.",
+    "product": "Product",
+    "library": "Library",
+    "coworking": "Coworking",
+    "cart": "Cart",
+    "contact": "Contact",
+    "support": "Technical Support",
+    "privacy": "Privacy",
+    "instagram": "Instagram",
+    "awards": "Awards",
+    "award_title": "Innovative Idea 2026"
+  },
+  "pricing": {
+    "title": "Nexus Subscription Plans",
+    "desc": "Access the library, coworking, and digital content according to your plan.",
+    "summary": "Plan Summary",
+    "books_month": "Books / month",
+    "quality": "Quality",
+    "format": "Format",
+    "basic_title": "Basic Plan",
+    "basic_desc": "Essential access to the library.",
+    "basic_coworking": "Not included",
+    "pro_title": "Pro Plan",
+    "pro_desc": "For frequent readers.",
+    "pro_coworking": "5 days / month",
+    "nexus_title": "Nexus Plan",
+    "nexus_desc": "Full premium experience.",
+    "nexus_coworking": "Unlimited"
+  },
+  "services": {
+    "title": "Comprehensive Solutions for your Studies",
+    "desc": "From access to specialized literature to physical spaces designed to maximize your productivity.",
+    "lib_title": "Digital Library",
+    "lib_desc": "Thousands of books, magazines, and documents at your fingertips. Read online or download your favorites.",
+    "cow_title": "Coworking",
+    "cow_desc": "Book study rooms, meeting spaces, or shared desks in real time.",
+    "shop_title": "Physical Store",
+    "shop_desc": "Buy academic material, stationery, and official merch directly on campus.",
+    "events_title": "Events",
+    "events_desc": "Exclusive workshops, reading clubs, and networking for members of the Nexus community."
+  },
+  "_cacheBust": 1783122065955
 }

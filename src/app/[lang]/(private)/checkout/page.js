@@ -11,7 +11,7 @@ function CheckoutPage() {
   const router = useRouter();
   const { cart, clearCart } = useCart();
   const { user } = useAuth();
-  const { t } = useI18n();
+  const t = useI18n();
 
   const [loading, setLoading] = useState(false);
   const [successData, setSuccessData] = useState(null);
@@ -309,3 +309,4 @@ function CheckoutPage() {
 }
 
 export default CheckoutPage;
+// FORCE_REBUILD_1783124179838

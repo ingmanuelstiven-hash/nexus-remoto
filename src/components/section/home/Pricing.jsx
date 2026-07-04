@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useI18n } from "@/context/TranslationsProvider";
 
 function Pricing() {
+  const t = useI18n();
   const header = useScrollAnimation();
   const cards = useScrollAnimation();
   const summary = useScrollAnimation();
@@ -14,34 +16,34 @@ function Pricing() {
 
   const plans = {
     basic: {
-      title: "Plan Básico",
-      description: "Acceso esencial a la biblioteca.",
+      title: t.pricing.basic_title,
+      description: t.pricing.basic_desc,
       price: "$9",
       period: "/mes",
       books: "2",
       quality: "SD",
       format: "EPUB",
-      coworking: "No incluido",
+      coworking: t.pricing.basic_coworking,
     },
     pro: {
-      title: "Plan Pro",
-      description: "Para lectores frecuentes.",
+      title: t.pricing.pro_title,
+      description: t.pricing.pro_desc,
       price: "$19",
       period: "/mes",
       books: "5",
       quality: "HD",
       format: "EPUB + PDF",
-      coworking: "5 días / mes",
+      coworking: t.pricing.pro_coworking,
     },
     nexus: {
-      title: "Plan Nexus",
-      description: "Experiencia premium completa.",
+      title: t.pricing.nexus_title,
+      description: t.pricing.nexus_desc,
       price: "$39",
       period: "/mes",
       books: "10",
       quality: "4K",
       format: "EPUB + PDF",
-      coworking: "Ilimitado",
+      coworking: t.pricing.nexus_coworking,
     },
   };
 
@@ -68,10 +70,10 @@ function Pricing() {
         `}
       >
         <h2 className="title-h2">
-          Planes de Suscripción Nexus
+          {t.pricing.title}
         </h2>
         <p className="text-slate-600">
-          Accede a la librería, coworking y contenidos digitales según tu plan.
+          {t.pricing.desc}
         </p>
       </header>
 
@@ -123,12 +125,12 @@ function Pricing() {
         `}
       >
         <h4 className="text-lg font-semibold">
-          Resumen del plan
+          {t.pricing.summary}
         </h4>
 
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <li>
-            <span className="text-sm text-slate-500">Libros / mes</span>
+            <span className="text-sm text-slate-500">{t.pricing.books_month}</span>
             <span
               key={`books-${activePlan}`}
               className="block text-xl font-semibold"
@@ -138,7 +140,7 @@ function Pricing() {
           </li>
 
           <li>
-            <span className="text-sm text-slate-500">Calidad</span>
+            <span className="text-sm text-slate-500">{t.pricing.quality}</span>
             <span
               key={`quality-${activePlan}`}
               className="block text-xl font-semibold"
@@ -148,7 +150,7 @@ function Pricing() {
           </li>
 
           <li>
-            <span className="text-sm text-slate-500">Formato</span>
+            <span className="text-sm text-slate-500">{t.pricing.format}</span>
             <span
               key={`format-${activePlan}`}
               className="block text-xl font-semibold"
@@ -158,7 +160,7 @@ function Pricing() {
           </li>
 
           <li>
-            <span className="text-sm text-slate-500">Coworking</span>
+            <span className="text-sm text-slate-500">{t.footer.coworking}</span>
             <span
               key={`coworking-${activePlan}`}
               className="block text-xl font-semibold"
@@ -173,3 +175,5 @@ function Pricing() {
 }
 
 export default Pricing;
+
+// FORCE_REBUILD_1783124179834

@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useI18n } from "@/context/TranslationsProvider";
 
 function CoworkingClient({ spaces = [] }) {
-  const { t } = useI18n();
+  const t = useI18n();
 
   const [selectedSpace, setSelectedSpace] = useState(null);
   const [isBooking, setIsBooking] = useState(false);
@@ -154,3 +154,4 @@ function StatCard({ title, value }) {
 }
 
 export default CoworkingClient;
+// FORCE_REBUILD_1783124179836

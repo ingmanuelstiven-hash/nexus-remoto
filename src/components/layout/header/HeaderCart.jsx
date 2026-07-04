@@ -3,6 +3,7 @@
 import { useCart } from "@/context/CartContext";
 import { useRouter } from "next/navigation";
 import BookImage from "@/components/ui/library/BookImage";
+import { useI18n } from "@/context/TranslationsProvider";
 
 function HeaderCart({ cartRef, openCart, setOpenCart, totalItems }) {
   const {
@@ -12,6 +13,7 @@ function HeaderCart({ cartRef, openCart, setOpenCart, totalItems }) {
     removeFromCart,
     clearCart,
   } = useCart();
+  const t = useI18n();
 
   const router = useRouter();
 
@@ -28,7 +30,7 @@ function HeaderCart({ cartRef, openCart, setOpenCart, totalItems }) {
         onClick={() => setOpenCart(!openCart)}
         className="relative py-1 hover:underline"
       >
-        Carrito
+        {t.navigation.cart}
 
         {totalItems > 0 && (
           <span className="absolute -top-2 -right-3 bg-red-500 text-white text-xs px-2 rounded-full">
@@ -47,7 +49,7 @@ function HeaderCart({ cartRef, openCart, setOpenCart, totalItems }) {
 
           {cart.length === 0 ? (
             <p className="text-center text-sm text-text-secondary py-6">
-              Tu carrito está vacío
+              {t.cart.empty_title}
             </p>
           ) : (
             <>
@@ -104,18 +106,18 @@ function HeaderCart({ cartRef, openCart, setOpenCart, totalItems }) {
                     </div>
 
                     {/* DELETE */}
-                    <button
-                      onClick={() => removeFromCart(item.bookId)}
-                      className="
-                        text-red-500
-                        text-sm
-                        hover:scale-110
-                        transition
-                      "
-                      title="Eliminar"
-                    >
-                      🗑
-                    </button>
+                      <button
+                        onClick={() => removeFromCart(item.bookId)}
+                        className="
+                          text-red-500
+                          text-sm
+                          hover:scale-110
+                          transition
+                        "
+                        title={t.cart.remove}
+                      >
+                        🗑
+                      </button>
                   </div>
                 ))}
 
@@ -127,7 +129,7 @@ function HeaderCart({ cartRef, openCart, setOpenCart, totalItems }) {
                 {/* TOTAL */}
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-text-secondary">
-                    Total
+                    {t.cart.total}
                   </span>
 
                   <span className="font-bold text-lg">
@@ -141,7 +143,7 @@ function HeaderCart({ cartRef, openCart, setOpenCart, totalItems }) {
                   {/* VACIAR */}
                   <button
                     onClick={() => {
-                      if (confirm("¿Vaciar carrito?")) clearCart();
+                      if (confirm(t.cart.empty_confirm)) clearCart();
                     }}
                     className="
                       flex-1
@@ -153,7 +155,7 @@ function HeaderCart({ cartRef, openCart, setOpenCart, totalItems }) {
                       transition
                     "
                   >
-                    Vaciar
+                    {t.cart.empty_btn}
                   </button>
 
                   {/* VER CARRITO */}
@@ -164,7 +166,7 @@ function HeaderCart({ cartRef, openCart, setOpenCart, totalItems }) {
                     }}
                     className="flex-1 btn-primary py-2"
                   >
-                    Ver carrito
+                    {t.cart.view_cart}
                   </button>
 
                 </div>

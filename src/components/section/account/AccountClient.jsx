@@ -5,11 +5,12 @@ import { useAuth } from "@/context/AuthContext";
 import { storeService } from "@/services/storeService";
 import { User, Calendar, ShoppingBag, Settings, LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useI18n } from "@/context/TranslationsProvider";
 
 // ==========================================
 // COMPONENTES STUB
 // ==========================================
-function AccountSidebar({ onTabChange, activeTab, onLogout }) {
+function AccountSidebar({ onTabChange, activeTab, onLogout, t }) {
   return (
     <div className="flex flex-col gap-2">
       <button
@@ -17,17 +18,17 @@ function AccountSidebar({ onTabChange, activeTab, onLogout }) {
         className={`flex items-center gap-3 px-4 py-3 border rounded-xl font-medium transition-colors ${activeTab === "perfil" ? "bg-[#1e2939] text-white" : "hover:bg-slate-100 text-slate-700"
           }`}
       >
-        <User size={18} /> Mi Perfil
+        <User size={18} /> {t.account.my_profile}
       </button>
 
-      <div className="pt-4 pb-1 px-2 text-[10px] font-bold text-slate-400 tracking-wider">ACTIVIDAD</div>
+      <div className="pt-4 pb-1 px-2 text-[10px] font-bold text-slate-400 tracking-wider">{t.account.activity}</div>
 
       <button
         onClick={() => onTabChange("historial-reservas")}
         className={`flex items-center gap-3 px-4 py-3 border rounded-xl font-medium transition-colors ${activeTab === "historial-reservas" ? "bg-[#1e2939] border-transparent text-white" : "bg-white border-slate-200 hover:bg-slate-50 text-slate-700"
           }`}
       >
-        <Calendar size={18} /> Mis Reservas
+        <Calendar size={18} /> {t.account.reservations}
       </button>
 
       <button
@@ -35,17 +36,17 @@ function AccountSidebar({ onTabChange, activeTab, onLogout }) {
         className={`flex items-center gap-3 px-4 py-3 border rounded-xl font-medium transition-colors ${activeTab === "historial-compras" ? "bg-[#1e2939] border-transparent text-white" : "bg-white border-slate-200 hover:bg-slate-50 text-slate-700"
           }`}
       >
-        <ShoppingBag size={18} /> Mis Compras
+        <ShoppingBag size={18} /> {t.account.purchases}
       </button>
 
-      <div className="pt-4 pb-1 px-2 text-[10px] font-bold text-slate-400 tracking-wider">AJUSTES</div>
+      <div className="pt-4 pb-1 px-2 text-[10px] font-bold text-slate-400 tracking-wider">{t.account.settings}</div>
 
       <button
         onClick={() => onTabChange("preferencias")}
         className={`flex items-center gap-3 px-4 py-3 border rounded-xl font-medium transition-colors ${activeTab === "preferencias" ? "bg-[#1e2939] border-transparent text-white" : "bg-white border-slate-200 hover:bg-slate-50 text-slate-700"
           }`}
       >
-        <Settings size={18} /> Preferencias
+        <Settings size={18} /> {t.account.preferences}
       </button>
 
       <div className="border-t border-slate-300 my-2" />
@@ -54,7 +55,7 @@ function AccountSidebar({ onTabChange, activeTab, onLogout }) {
         onClick={onLogout}
         className="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-red-500 hover:bg-red-50 transition-colors"
       >
-        <LogOut size={18} /> Salir
+        <LogOut size={18} /> {t.account.logout}
       </button>
     </div>
   );
@@ -96,7 +97,7 @@ function HistoryItem({ compra }) {
 export default function AccountClient() {
   const { user, logout } = useAuth();
   const router = useRouter();
-  const { t } = useI18n();
+  const t = useI18n();
 
   const [loading, setLoading] = useState(false);
   const [purchases, setPurchases] = useState([]);
@@ -136,7 +137,7 @@ export default function AccountClient() {
           <div className="space-y-8">
             <div className="flex flex-col md:flex-row items-center md:items-start gap-6 pb-8 border-b border-slate-300 text-center md:text-left">
               <div className="w-24 h-24 rounded-full border border-slate-800 bg-slate-300 flex items-center justify-center overflow-hidden">
-                <UserIcon size={48} className="text-slate-500" />
+                <User size={48} className="text-slate-500" />
               </div>
               <div className="flex flex-col items-center md:items-start pt-1">
                 <h1 className="text-2xl font-bold text-black mb-1">{userProfile.nombre}</h1>
@@ -190,20 +191,21 @@ export default function AccountClient() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
               </div>
-          </div>
+            </div>
+          </section>
         );
 
       case "preferencias":
         return (
           <div className="space-y-8">
             <div>
-              <h3 className="text-lg font-semibold text-text-primary mb-6">Preferencias de Cuenta</h3>
+              <h3 className="text-lg font-semibold text-text-primary mb-6">{t.account.acc_prefs}</h3>
               <div className="space-y-6">
                 <div className="bg-bg-fill border border-border-light rounded-xl p-6">
-                  <h4 className="text-sm font-semibold text-text-primary mb-4">Notificaciones</h4>
+                  <h4 className="text-sm font-semibold text-text-primary mb-4">{t.account.notifications}</h4>
                   <div className="space-y-3">
                     <label className="flex items-center justify-between">
-                      <span className="text-sm text-text-primary">Recordatorios de préstamos</span>
+                      <span className="text-sm text-text-primary">{t.account.loan_reminders}</span>
                       <input type="checkbox" defaultChecked className="rounded border-border-light" />
                     </label>
                   </div>
@@ -217,14 +219,14 @@ export default function AccountClient() {
         );
 
       default:
-        return <div className="text-text-secondary">Sección en construcción.</div>;
+        return <div className="text-text-secondary">{t.account.construction}</div>;
     }
   };
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-[260px_1fr] max-w-6xl mx-auto w-full px-4 md:px-6 py-8 gap-8 flex-1 items-start">
       <aside className="bg-[#fcfcf9] border border-slate-200 rounded-2xl p-4 shadow-sm h-fit">
-        <AccountSidebar onTabChange={setActiveTab} activeTab={activeTab} onLogout={handleLogout} />
+        <AccountSidebar onTabChange={setActiveTab} activeTab={activeTab} onLogout={handleLogout} t={t} />
       </aside>
       <main className="bg-slate-50 border border-slate-200 rounded-2xl p-6 md:p-10 shadow-sm min-h-[500px]">
         {renderTabContent()}
@@ -232,3 +234,5 @@ export default function AccountClient() {
     </div>
   );
 }
+
+// FORCE_REBUILD_1783124179836
