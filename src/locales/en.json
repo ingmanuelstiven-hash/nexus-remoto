@@ -170,5 +170,34 @@
     "events_title": "Events",
     "events_desc": "Exclusive workshops, reading clubs, and networking for members of the Nexus community."
   },
-  "_cacheBust": 1783122065955
+  "_cacheBust": 1783122065955,
+  "booking": {
+    "processing": "Processing booking...",
+    "title": "Booking at",
+    "cancel": "Cancel",
+    "next": "Next",
+    "selected_hour": "Selected hour:",
+    "phone": "Phone",
+    "notes": "Notes (optional)",
+    "back": "Back",
+    "review": "Review",
+    "space": "Space:",
+    "hour": "Hour:",
+    "confirm": "Confirm Booking",
+    "success_title": "Booking Confirmed!",
+    "success_desc": "Your booking for {space} at {hour} has been successfully scheduled.",
+    "home": "Back to Home"
+  },
+  "login": {
+    "home": "Home",
+    "title": "Sign In",
+    "desc": "Access quickly and securely using your institutional account.",
+    "google": "Sign in with Google",
+    "access_title": "Institutional access:",
+    "access_desc": "Use the Google button to sign in with your university account linked to Auth0."
+  },
+  "loading": {
+    "generic": "Loading...",
+    "session": "Loading session..."
+  }
 }

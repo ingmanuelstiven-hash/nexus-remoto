@@ -9,10 +9,12 @@ import Header from "@/components/layout/header/Header";
 import Footer from "@/components/layout/Footer";
 import Loader from "@/components/ui/Loader";
 import { useLoader } from "@/hooks/useLoader";
+import { useI18n } from "@/context/TranslationsProvider";
 
 export default function ProtectedLayout({ children }) {
   const { user, mounted } = useAuth();
   const router = useRouter();
+  const t = useI18n();
 
   const { isLoading, startLoading, stopLoading } = useLoader(true);
 
@@ -40,7 +42,7 @@ export default function ProtectedLayout({ children }) {
 
   // 🔥 2. loader ya controlado en cliente
   if (isLoading) {
-    return <Loader text="Cargando sesión..." />;
+    return <Loader text={t.loading.session} />;
   }
 
   if (!user) return null;

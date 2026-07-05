@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import Stepper from "@/components/ui/Stepper";
 import { useLoader } from "@/hooks/useLoader";
 import { useI18n } from "@/context/TranslationsProvider";
@@ -9,6 +9,8 @@ import { useI18n } from "@/context/TranslationsProvider";
 function BookingFlow({ space, onClose, selectedHour }) {
 
   const router = useRouter();
+  const params = useParams();
+  const lang = params?.lang || 'es';
   const t = useI18n();
 
   const [step, setStep] = useState(selectedHour ? 2 : 1);
@@ -54,7 +56,7 @@ function BookingFlow({ space, onClose, selectedHour }) {
     >
       {isLoading && (
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center z-50 rounded-[20px]">
-          <p className="text-white font-bold">Procesando reserva...</p>
+          <p className="text-white font-bold">{t.booking.processing}</p>
         </div>
       )}
 
@@ -73,7 +75,7 @@ function BookingFlow({ space, onClose, selectedHour }) {
             </button>
 
             <h2 className="text-[28px] font-bold text-slate-900 tracking-tight">
-              Reserva en {space.nombre}
+              {t.booking.title} {space.nombre}
             </h2>
 
             <Stepper step={step} clickable={false} />
@@ -116,7 +118,7 @@ function BookingFlow({ space, onClose, selectedHour }) {
                 onClick={onClose} 
                 className="flex-1 border border-slate-400 bg-transparent text-slate-900 font-bold py-3.5 rounded-2xl hover:bg-slate-200 transition-colors"
               >
-                Cancelar
+                {t.booking.cancel}
               </button>
 
               <button
@@ -136,19 +138,19 @@ function BookingFlow({ space, onClose, selectedHour }) {
           <div className="space-y-6 mt-6">
 
             <p className="text-[15px] text-slate-900">
-              Hora seleccionada: <strong className="text-xl ml-1">{bookingData.hora}</strong>
+              {t.booking.selected_hour} <strong className="text-xl ml-1">{bookingData.hora}</strong>
             </p>
 
             <input
               type="tel"
-              placeholder="Celular"
+              placeholder={t.booking.phone}
               value={bookingData.celular}
               onChange={(e) => update("celular", e.target.value)}
               className="w-full border border-slate-400 rounded-xl px-4 py-3.5 bg-white outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] text-slate-900"
             />
 
             <textarea
-              placeholder="Notas (opcional)"
+              placeholder={t.booking.notes}
               value={bookingData.notas}
               onChange={(e) => update("notas", e.target.value)}
               className="w-full border border-slate-400 rounded-xl px-4 py-3.5 bg-white outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] text-slate-900 min-h-[120px] resize-y"
@@ -159,7 +161,7 @@ function BookingFlow({ space, onClose, selectedHour }) {
                 onClick={() => setStep(1)} 
                 className="flex-1 border border-slate-400 bg-transparent text-slate-900 font-bold py-3.5 rounded-2xl hover:bg-slate-200 transition-colors"
               >
-                Atrás
+                {t.booking.back}
               </button>
 
               <button
@@ -167,7 +169,7 @@ function BookingFlow({ space, onClose, selectedHour }) {
                 onClick={() => setStep(3)}
                 className="flex-1 bg-[#0f172a] text-white font-bold py-3.5 rounded-2xl hover:bg-black transition-colors disabled:opacity-50"
               >
-                Revisar
+                {t.booking.review}
               </button>
             </div>
 
@@ -179,10 +181,10 @@ function BookingFlow({ space, onClose, selectedHour }) {
           <div className="space-y-6 mt-6">
 
             <div className="border border-slate-400 rounded-xl p-5 bg-transparent space-y-3 text-[15px] text-slate-800">
-              <p><strong className="text-slate-900">Espacio:</strong> {space.nombre}</p>
-              <p><strong className="text-slate-900">Hora:</strong> {bookingData.hora}</p>
-              <p><strong className="text-slate-900">Celular:</strong> {bookingData.celular}</p>
-              <p><strong className="text-slate-900">Notas:</strong> {bookingData.notas || "—"}</p>
+              <p><strong className="text-slate-900">{t.booking.space}</strong> {space.nombre}</p>
+              <p><strong className="text-slate-900">{t.booking.hour}</strong> {bookingData.hora}</p>
+              <p><strong className="text-slate-900">{t.booking.phone}:</strong> {bookingData.celular}</p>
+              <p><strong className="text-slate-900">{t.booking.notes}</strong> {bookingData.notas || "—"}</p>
             </div>
 
             <div className="flex gap-4 mt-8">
@@ -190,14 +192,14 @@ function BookingFlow({ space, onClose, selectedHour }) {
                 onClick={() => setStep(2)} 
                 className="flex-1 border border-slate-400 bg-transparent text-slate-900 font-bold py-3.5 rounded-2xl hover:bg-slate-200 transition-colors"
               >
-                Atrás
+                {t.booking.back}
               </button>
 
               <button 
                 onClick={handleConfirm} 
                 className="flex-1 bg-[#0f172a] text-white font-bold py-3.5 rounded-2xl hover:bg-black transition-colors"
               >
-                {t.coworking.confirm}
+                {t.booking.confirm}
               </button>
             </div>
 
@@ -214,18 +216,18 @@ function BookingFlow({ space, onClose, selectedHour }) {
             </div>
             
             <h2 className="text-[28px] font-bold text-slate-900 tracking-tight">
-              ¡Reserva Confirmada!
+              {t.booking.success_title}
             </h2>
             
             <p className="text-[15px] text-slate-600 max-w-sm mx-auto leading-relaxed">
-              Tu reserva para la <strong className="text-slate-900">{space.nombre}</strong> a las <strong className="text-slate-900">{bookingData.hora}</strong> ha sido agendada con éxito.
+              {t.booking.success_desc.replace('{space}', space.nombre).replace('{hour}', bookingData.hora)}
             </p>
             
             <button 
-              onClick={() => { onClose(); router.push("/dashboard"); }} 
+              onClick={() => { onClose(); router.push(`/${lang}/dashboard`); }} 
               className="mt-8 w-full sm:w-auto bg-[#0f172a] text-white font-bold px-12 py-3.5 rounded-2xl hover:bg-black transition-colors"
             >
-              Volver al inicio
+              {t.booking.home}
             </button>
           </div>
         )}

@@ -170,5 +170,34 @@
     "events_title": "Événements",
     "events_desc": "Ateliers, clubs de lecture et réseautage exclusifs pour les membres de la communauté Nexus."
   },
-  "_cacheBust": 1783122065955
+  "_cacheBust": 1783122065955,
+  "booking": {
+    "processing": "Traitement de la réservation...",
+    "title": "Réservation à",
+    "cancel": "Annuler",
+    "next": "Suivant",
+    "selected_hour": "Heure sélectionnée :",
+    "phone": "Téléphone",
+    "notes": "Notes (facultatif)",
+    "back": "Retour",
+    "review": "Vérifier",
+    "space": "Espace :",
+    "hour": "Heure :",
+    "confirm": "Confirmer la Réservation",
+    "success_title": "Réservation Confirmée !",
+    "success_desc": "Votre réservation pour {space} à {hour} a été programmée avec succès.",
+    "home": "Retour à l'Accueil"
+  },
+  "login": {
+    "home": "Accueil",
+    "title": "Se connecter",
+    "desc": "Accédez rapidement et en toute sécurité avec votre compte institutionnel.",
+    "google": "Se connecter avec Google",
+    "access_title": "Accès institutionnel :",
+    "access_desc": "Utilisez le bouton Google pour vous connecter avec votre compte universitaire lié à Auth0."
+  },
+  "loading": {
+    "generic": "Chargement...",
+    "session": "Chargement de la session..."
+  }
 }

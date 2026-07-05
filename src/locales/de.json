@@ -170,5 +170,34 @@
     "events_title": "Veranstaltungen",
     "events_desc": "Exklusive Workshops, Leseclubs und Networking für Mitglieder der Nexus-Gemeinschaft."
   },
-  "_cacheBust": 1783122065957
+  "_cacheBust": 1783122065957,
+  "booking": {
+    "processing": "Buchung wird bearbeitet...",
+    "title": "Buchung in",
+    "cancel": "Abbrechen",
+    "next": "Weiter",
+    "selected_hour": "Ausgewählte Zeit:",
+    "phone": "Telefon",
+    "notes": "Notizen (optional)",
+    "back": "Zurück",
+    "review": "Überprüfen",
+    "space": "Raum:",
+    "hour": "Zeit:",
+    "confirm": "Buchung bestätigen",
+    "success_title": "Buchung bestätigt!",
+    "success_desc": "Ihre Buchung für {space} um {hour} wurde erfolgreich geplant.",
+    "home": "Zurück zur Startseite"
+  },
+  "login": {
+    "home": "Startseite",
+    "title": "Anmelden",
+    "desc": "Melden Sie sich schnell und sicher mit Ihrem institutionellen Konto an.",
+    "google": "Mit Google anmelden",
+    "access_title": "Institutioneller Zugang:",
+    "access_desc": "Verwenden Sie die Google-Schaltfläche, um sich mit Ihrem Auth0-verknüpften Universitätskonto anzumelden."
+  },
+  "loading": {
+    "generic": "Wird geladen...",
+    "session": "Sitzung wird geladen..."
+  }
 }

@@ -1,10 +1,14 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import { House } from "lucide-react";
+import { useI18n } from "@/context/TranslationsProvider";
 
 function Login() {
   const router = useRouter();
+  const params = useParams();
+  const lang = params?.lang || 'es';
+  const t = useI18n();
 
   const handleGoogleLogin = () => {
     // Redirigir al flujo oficial de Auth0
@@ -16,11 +20,11 @@ function Login() {
       <div className="relative w-full max-w-md login-card rounded-[2rem] p-8 sm:p-10 bg-slate-200">
         {/* HOME */}
         <button
-          onClick={() => router.replace("/")}
+          onClick={() => router.replace(`/${lang}`)}
           className="inline-flex items-center gap-2 rounded-full login-home-pill px-4 py-2 text-sm font-semibold shadow-lg shadow-slate-900/10"
         >
           <House size={18} />
-          Home
+          {t.login.home}
         </button>
 
         {/* LOGO */}
@@ -29,11 +33,11 @@ function Login() {
         </div>
 
         <h2 className="text-2xl font-semibold text-center text-slate-950 mb-4">
-          Iniciar sesión
+          {t.login.title}
         </h2>
 
         <p className="text-sm text-slate-600 text-center mb-8">
-          Accede de forma rápida y segura utilizando tu cuenta institucional.
+          {t.login.desc}
         </p>
 
         {/* INICIAR SESIÓN CON GOOGLE (AUTH0) */}
@@ -64,13 +68,12 @@ function Login() {
               d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.96 1.19 15.24 0 12 0 7.31 0 3.18 2.18 1.21 5.79l4.06 3.22c.95-2.85 3.6-4.96 6.73-4.96z"
             />
           </svg>
-          <span>Iniciar sesión con Google</span>
+          <span>{t.login.google}</span>
         </button>
 
-        {/* DEMO ACCESOS */}
         <div className="flex flex-col gap-1 mt-8 p-4 login-panel rounded-3xl text-[11px] font-medium bg-brand-200/50 text-slate-800">
-          <p className="font-bold">Acceso institucional:</p>
-          <p>Usa el botón de Google para iniciar sesión mediante tu cuenta universitaria vinculada a Auth0.</p>
+          <p className="font-bold">{t.login.access_title}</p>
+          <p>{t.login.access_desc}</p>
         </div>
       </div>
     </section>

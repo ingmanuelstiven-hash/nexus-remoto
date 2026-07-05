@@ -170,5 +170,34 @@
     "events_title": "Eventi",
     "events_desc": "Workshop esclusivi, club del libro e networking per i membri della comunità Nexus."
   },
-  "_cacheBust": 1783122065956
+  "_cacheBust": 1783122065956,
+  "booking": {
+    "processing": "Elaborazione della prenotazione...",
+    "title": "Prenotazione presso",
+    "cancel": "Annulla",
+    "next": "Avanti",
+    "selected_hour": "Ora selezionata:",
+    "phone": "Telefono",
+    "notes": "Note (facoltativo)",
+    "back": "Indietro",
+    "review": "Rivedi",
+    "space": "Spazio:",
+    "hour": "Ora:",
+    "confirm": "Conferma Prenotazione",
+    "success_title": "Prenotazione Confermata!",
+    "success_desc": "La tua prenotazione per {space} alle {hour} è stata programmata con successo.",
+    "home": "Torna alla Home"
+  },
+  "login": {
+    "home": "Home",
+    "title": "Accedi",
+    "desc": "Accedi in modo rapido e sicuro utilizzando il tuo account istituzionale.",
+    "google": "Accedi con Google",
+    "access_title": "Accesso istituzionale:",
+    "access_desc": "Usa il pulsante Google per accedere con il tuo account universitario collegato ad Auth0."
+  },
+  "loading": {
+    "generic": "Caricamento...",
+    "session": "Caricamento sessione..."
+  }
 }

@@ -14,9 +14,9 @@ function BookDetailClient({ book }) {
 
   if (!book) {
     return (
-      <main className="min-h-[60vh] flex items-center justify-center">
-        <p className="text-slate-500">Cargando...</p>
-      </main>
+      <div className="max-w-6xl mx-auto px-6 py-12 flex justify-center min-h-[50vh] items-center">
+        <p className="text-slate-500">{t.loading.generic}</p>
+      </div>
     );
   }
 
