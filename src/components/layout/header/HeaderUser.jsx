@@ -1,10 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
+import { useI18n } from "@/context/TranslationsProvider";
 import { useAuth } from "@/context/AuthContext";
 import { LogOut, User } from "lucide-react";
-
-import { useI18n } from "@/context/TranslationsProvider";
 
 function HeaderUser({
   accountRef,
@@ -13,13 +12,15 @@ function HeaderUser({
   user,
 }) {
   const router = useRouter();
+  const params = useParams();
+  const lang = params?.lang || 'es';
   const { logout } = useAuth();
   const t = useI18n();
 
   const handleLogout = () => {
     logout();
     setOpenAccount(false);
-    router.push("/");
+    router.push(`/${lang}`);
   };
 
   return (
@@ -67,8 +68,8 @@ function HeaderUser({
 
             <button
               onClick={() => {
-                router.push("/account");
                 setOpenAccount(false);
+                router.push(`/${lang}/account`);
               }}
               className="
                 flex items-center gap-2
@@ -80,7 +81,7 @@ function HeaderUser({
               "
             >
               <User size={16} />
-              Mi cuenta
+              {t.navigation.account}
             </button>
 
             <button
@@ -96,7 +97,7 @@ function HeaderUser({
               "
             >
               <LogOut size={16} />
-              Cerrar sesión
+              {t.navigation.logout}
             </button>
 
           </div>

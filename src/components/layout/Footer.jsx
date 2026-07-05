@@ -2,8 +2,11 @@
 
 import Link from "next/link";
 import { useI18n } from "@/context/TranslationsProvider";
+import { useParams } from "next/navigation";
 
 export default function Footer() {
+  const params = useParams();
+  const lang = params?.lang || 'es';
   const t = useI18n();
   return (
     <footer id="contacto" className="footer pt-20 pb-20 text-slate-300">
@@ -22,17 +25,17 @@ export default function Footer() {
           <h2 className="text-white font-semibold text-2xl tracking-wide">{t.footer.product}</h2>
           <ul className="space-y-3 text-sm text-slate-300">
             <li>
-              <Link href="/library" className="hover:text-white transition">
+              <Link href={`/${lang}/library`} className="hover:text-white transition">
                 {t.footer.library}
               </Link>
             </li>
             <li>
-              <Link href="/coworking" className="hover:text-white transition">
+              <Link href={`/${lang}/coworking`} className="hover:text-white transition">
                 {t.footer.coworking}
               </Link>
             </li>
             <li>
-              <Link href="/cart" className="hover:text-white transition">
+              <Link href={`/${lang}/cart`} className="hover:text-white transition">
                 {t.footer.cart}
               </Link>
             </li>

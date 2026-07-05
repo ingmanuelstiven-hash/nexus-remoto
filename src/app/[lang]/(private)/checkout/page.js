@@ -161,7 +161,7 @@ function CheckoutPage() {
             <button
               onClick={() => {
                 // Forzar refresco para ver el top actualizado en el home
-                router.push("/");
+                router.push(`/${lang}/`);
                 setTimeout(() => router.refresh(), 200);
               }}
               className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-slate-950 px-6 py-3.5 text-sm font-semibold text-white hover:bg-slate-800 transition"
@@ -170,7 +170,7 @@ function CheckoutPage() {
               {t.checkout.back_library}
             </button>
             <button
-              onClick={() => router.push("/account")}
+              onClick={() => router.push(`/${lang}/account`)}
               className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-white border border-slate-300 px-6 py-3.5 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition"
             >
               <ShoppingBag size={16} />
@@ -192,7 +192,7 @@ function CheckoutPage() {
             {t.checkout.empty_desc}
           </p>
           <button
-            onClick={() => router.push("/library")}
+            onClick={() => router.push(`/${lang}/library`)}
             className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-2.5 text-sm font-semibold text-white hover:bg-slate-800 transition"
           >
             {t.checkout.explore_catalog}

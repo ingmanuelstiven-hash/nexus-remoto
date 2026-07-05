@@ -33,7 +33,7 @@ function CartPage() {
           </p>
 
           <Link
-            href="/library"
+            href={`/${lang}/library`}
             className="
               inline-flex items-center justify-center
               rounded-xl bg-slate-950 px-6 py-3
@@ -71,7 +71,7 @@ function CartPage() {
             </div>
 
             <Link
-              href="/library"
+              href={`/${lang}/library`}
               className="text-sm font-semibold text-slate-600 underline-offset-4 hover:underline hover:text-slate-950"
             >
               {t.cart.keep_shopping}
@@ -217,7 +217,7 @@ function CartPage() {
           </div>
 
           <Link
-            href="/checkout"
+            href={`/${lang}/checkout`}
             className="
               inline-flex items-center justify-center
               rounded-xl bg-yellow-300 px-7 py-3

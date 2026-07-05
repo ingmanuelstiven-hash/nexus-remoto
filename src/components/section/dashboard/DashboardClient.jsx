@@ -1,13 +1,17 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import { motion } from "framer-motion";
+import { useI18n } from "@/context/TranslationsProvider";
 
 export default function DashboardClient({
   totalLibros,
   espaciosDisponibles,
 }) {
   const router = useRouter();
+  const params = useParams();
+  const lang = params?.lang || 'es';
+  const t = useI18n();
 
   return (
     <motion.main
@@ -21,13 +25,13 @@ export default function DashboardClient({
     >
       <div className="mb-8">
         <p className="text-sm font-semibold uppercase tracking-[0.18em] text-yellow-500 mb-2">
-          Panel principal
+          {t.dashboard.panel}
         </p>
         <h1 className="text-3xl sm:text-4xl font-bold text-slate-950">
-          Bienvenido a Nexus
+          {t.dashboard.welcome}
         </h1>
         <p className="mt-3 max-w-2xl text-slate-600">
-          Gestiona tu lectura, compras y espacios de coworking desde un solo lugar.
+          {t.dashboard.desc}
         </p>
       </div>
 
@@ -58,23 +62,22 @@ export default function DashboardClient({
           <div className="relative z-10 flex h-full flex-col justify-between gap-10">
             <div>
               <span className="inline-flex rounded-full bg-yellow-300 px-3 py-1 text-xs font-bold text-slate-950">
-                Nexus Universitario
+                {t.dashboard.tag}
               </span>
 
               <h2 className="mt-5 text-3xl sm:text-4xl font-bold leading-tight">
-                Todo tu ecosistema académico en un solo panel
+                {t.dashboard.hero_title}
               </h2>
 
               <p className="mt-4 max-w-xl text-sm sm:text-base text-slate-300">
-                Accede rápidamente a la librería, consulta espacios disponibles
-                y gestiona tus compras o reservas desde esta vista.
+                {t.dashboard.hero_desc}
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <Stat label="Libros disponibles" value={totalLibros} />
-              <Stat label="Espacios libres" value={espaciosDisponibles} />
-              <Stat label="Año fiscal" value="2026" />
+              <Stat label={t.dashboard.stat_books} value={totalLibros} />
+              <Stat label={t.dashboard.stat_spaces} value={espaciosDisponibles} />
+              <Stat label={t.dashboard.stat_year} value="2026" />
             </div>
           </div>
         </motion.section>
@@ -83,28 +86,28 @@ export default function DashboardClient({
         <Card
           delay={0.2}
           icon="📚"
-          title="Librería"
-          description="Explora libros, revistas, categorías y más vendidos."
-          action="Ir a librería"
-          onClick={() => router.push("/library")}
+          title={t.dashboard.lib_title}
+          description={t.dashboard.lib_desc}
+          action={t.dashboard.lib_action}
+          onClick={() => router.push(`/${lang}/library`)}
         />
 
         <Card
           delay={0.3}
           icon="🏢"
-          title="Coworking"
-          description="Consulta espacios disponibles y realiza reservas."
-          action="Ver espacios"
-          onClick={() => router.push("/coworking")}
+          title={t.dashboard.cow_title}
+          description={t.dashboard.cow_desc}
+          action={t.dashboard.cow_action}
+          onClick={() => router.push(`/${lang}/coworking`)}
         />
 
         <Card
           delay={0.4}
           icon="👤"
-          title="Mi cuenta"
-          description="Revisa tu perfil, actividad y opciones personales."
-          action="Ver cuenta"
-          onClick={() => router.push("/account")}
+          title={t.dashboard.acc_title}
+          description={t.dashboard.acc_desc}
+          action={t.dashboard.acc_action}
+          onClick={() => router.push(`/${lang}/account`)}
         />
       </div>
     </motion.main>

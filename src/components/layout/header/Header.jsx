@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
@@ -14,6 +14,8 @@ import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 
 function Header() {
   const router = useRouter();
+  const params = useParams();
+  const lang = params?.lang || 'es';
   const { user, mounted, logout } = useAuth();
   const { cart } = useCart();
   const t = useI18n();
@@ -51,7 +53,7 @@ function Header() {
 
         {/* LOGO */}
         <div className="flex items-center gap-4">
-          <button onClick={() => router.push("/dashboard")}>
+          <button onClick={() => router.push(`/${lang}`)}>
             <img src="/img/nexus.svg" alt="Nexus" className="w-20" />
           </button>
         </div>
@@ -59,12 +61,12 @@ function Header() {
         {/* DESKTOP */}
         <nav className="hidden md:flex items-center gap-6 text-sm">
 
-          {!user && <Link href="/login">{t.navigation.login}</Link>}
+          {!user && <Link href={`/${lang}/login`}>{t.navigation.login}</Link>}
 
           {user && (
             <>
-              <Link href="/library">{t.navigation.library}</Link>
-              <Link href="/coworking">{t.navigation.coworking}</Link>
+              <Link href={`/${lang}/library`}>{t.navigation.library}</Link>
+              <Link href={`/${lang}/coworking`}>{t.navigation.coworking}</Link>
 
               <HeaderCart
                 cartRef={cartRef}

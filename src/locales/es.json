@@ -101,9 +101,24 @@
     "construction": "Sección en construcción."
   },
   "dashboard": {
-    "title": "Panel de Control",
-    "users": "Usuarios",
-    "stats": "Estadísticas"
+    "panel": "Panel principal",
+    "welcome": "Bienvenido a Nexus",
+    "desc": "Gestiona tu lectura, compras y espacios de coworking desde un solo lugar.",
+    "tag": "Nexus Universitario",
+    "hero_title": "Todo tu ecosistema académico en un solo panel",
+    "hero_desc": "Accede rápidamente a la librería, consulta espacios disponibles y gestiona tus compras o reservas desde esta vista.",
+    "stat_books": "Libros disponibles",
+    "stat_spaces": "Espacios libres",
+    "stat_year": "Año fiscal",
+    "lib_title": "Librería",
+    "lib_desc": "Explora libros, revistas, categorías y más vendidos.",
+    "lib_action": "Ir a librería",
+    "cow_title": "Coworking",
+    "cow_desc": "Consulta espacios disponibles y realiza reservas.",
+    "cow_action": "Ver espacios",
+    "acc_title": "Mi cuenta",
+    "acc_desc": "Revisa tu perfil, actividad y opciones personales.",
+    "acc_action": "Ver cuenta"
   },
   "book_detail": {
     "author": "Autor",

@@ -101,9 +101,24 @@
     "construction": "Section under construction."
   },
   "dashboard": {
-    "title": "Dashboard",
-    "users": "Users",
-    "stats": "Statistics"
+    "panel": "Main Panel",
+    "welcome": "Welcome to Nexus",
+    "desc": "Manage your reading, purchases and coworking spaces from one place.",
+    "tag": "Nexus University",
+    "hero_title": "Your entire academic ecosystem in one dashboard",
+    "hero_desc": "Quickly access the library, check available spaces and manage your purchases or reservations from this view.",
+    "stat_books": "Available books",
+    "stat_spaces": "Free spaces",
+    "stat_year": "Fiscal year",
+    "lib_title": "Library",
+    "lib_desc": "Explore books, magazines, categories and best sellers.",
+    "lib_action": "Go to library",
+    "cow_title": "Coworking",
+    "cow_desc": "Check available spaces and make reservations.",
+    "cow_action": "View spaces",
+    "acc_title": "My Account",
+    "acc_desc": "Check your profile, activity and personal options.",
+    "acc_action": "View account"
   },
   "book_detail": {
     "author": "Author",

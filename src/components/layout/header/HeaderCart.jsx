@@ -1,7 +1,7 @@
 "use client";
 
 import { useCart } from "@/context/CartContext";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import BookImage from "@/components/ui/library/BookImage";
 import { useI18n } from "@/context/TranslationsProvider";
 
@@ -14,6 +14,8 @@ function HeaderCart({ cartRef, openCart, setOpenCart, totalItems }) {
     clearCart,
   } = useCart();
   const t = useI18n();
+  const params = useParams();
+  const lang = params?.lang || 'es';
 
   const router = useRouter();
 
@@ -162,7 +164,7 @@ function HeaderCart({ cartRef, openCart, setOpenCart, totalItems }) {
                   <button
                     onClick={() => {
                       setOpenCart(false);
-                      router.push("/cart");
+                      router.push(`/${lang}/cart`);
                     }}
                     className="flex-1 btn-primary py-2"
                   >

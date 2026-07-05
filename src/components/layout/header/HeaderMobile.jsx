@@ -7,9 +7,12 @@ import { LogOut } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLockBodyScroll } from "@/hooks/useLockBodyScroll";
 import { useI18n } from "@/context/TranslationsProvider";
+import { useParams } from "next/navigation";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 
 function HeaderMobile({ open, user, totalItems, onClose, onLogout }) {
+  const params = useParams();
+  const lang = params?.lang || 'es';
   const [mounted, setMounted] = useState(false);
   const t = useI18n();
 
@@ -79,21 +82,21 @@ function HeaderMobile({ open, user, totalItems, onClose, onLogout }) {
               {/* Language Selector Mobile */}
               <LanguageSwitcher className="justify-center mb-2" />
 
-              {!user && (
-                <Link href="/login" onClick={onClose}>
-                  {t.navigation.login}
+              {!user ? (
+                <Link href={`/${lang}/login`} onClick={onClose}>
+                  <div className="w-full text-center py-3 rounded-full font-bold text-white bg-slate-900 border border-slate-700 shadow-md">
+                    {t.navigation.login}
+                  </div>
                 </Link>
-              )}
+              ) : (
+                <div className="flex flex-col gap-3 font-semibold text-slate-800 text-lg">
+                  <Link href={`/${lang}/library`} onClick={onClose}>📚 {t.navigation.library}</Link>
+                  <Link href={`/${lang}/coworking`} onClick={onClose}>💼 {t.navigation.coworking}</Link>
 
-              {user && (
-                <>
-                  <Link href="/library" onClick={onClose}>📚 {t.navigation.library}</Link>
-                  <Link href="/coworking" onClick={onClose}>💼 {t.navigation.coworking}</Link>
-
-                  <Link href="/cart" onClick={onClose}>
-                    🛒 {t.navigation.cart} ({totalItems})
+                  <Link href={`/${lang}/cart`} onClick={onClose}>
+                    🛒 {t.navigation.cart} {totalItems > 0 && <span className="ml-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">{totalItems}</span>}
                   </Link>
-                  <Link href="/account" onClick={onClose}>👤 {t.navigation.account}</Link>
+                  <Link href={`/${lang}/account`} onClick={onClose}>👤 {t.navigation.account}</Link>
                   
                   <div className="border-t border-border-default my-2"></div>
                   
@@ -106,7 +109,7 @@ function HeaderMobile({ open, user, totalItems, onClose, onLogout }) {
                   >
                     <LogOut size={18} /> {t.navigation.logout}
                   </button>
-                </>
+                </div>
               )}
             </nav>
 
