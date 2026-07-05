@@ -4,10 +4,13 @@ import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { getImageSrc } from "@/lib/getImageSrc";
 import { useI18n } from "@/context/TranslationsProvider";
+import { useParams } from "next/navigation";
 
 function CartPage() {
   const { cart, increaseQty, decreaseQty, removeFromCart } = useCart();
   const t = useI18n();
+  const params = useParams();
+  const lang = params?.lang || "es";
 
   const total = cart.reduce(
     (acc, item) =>

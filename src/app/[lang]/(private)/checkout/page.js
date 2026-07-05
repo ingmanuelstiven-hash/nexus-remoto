@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
 import { CheckCircle2, ArrowRight, ShoppingBag, BookOpen } from "lucide-react";
@@ -12,6 +12,8 @@ function CheckoutPage() {
   const { cart, clearCart } = useCart();
   const { user } = useAuth();
   const t = useI18n();
+  const params = useParams();
+  const lang = params?.lang || "es";
 
   const [loading, setLoading] = useState(false);
   const [successData, setSuccessData] = useState(null);

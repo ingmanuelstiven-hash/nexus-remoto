@@ -40,7 +40,6 @@ function Login() {
           {t.login.desc}
         </p>
 
-        {/* INICIAR SESIÓN CON GOOGLE (AUTH0) */}
         <button
           type="button"
           onClick={handleGoogleLogin}
@@ -70,11 +69,6 @@ function Login() {
           </svg>
           <span>{t.login.google}</span>
         </button>
-
-        <div className="flex flex-col gap-1 mt-8 p-4 login-panel rounded-3xl text-[11px] font-medium bg-brand-200/50 text-slate-800">
-          <p className="font-bold">{t.login.access_title}</p>
-          <p>{t.login.access_desc}</p>
-        </div>
       </div>
     </section>
   );

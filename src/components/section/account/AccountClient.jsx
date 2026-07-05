@@ -61,12 +61,12 @@ function AccountSidebar({ onTabChange, activeTab, onLogout, t }) {
   );
 }
 
-function HistoryItem({ compra }) {
+function HistoryItem({ compra, t }) {
   return (
     <div className="flex flex-col sm:flex-row gap-6 p-5 border border-border-light rounded-xl sm:items-center bg-white shadow-sm hover:shadow-md transition">
       <img
-        src={compra.imagen || "https://placehold.net/120x180"}
-        alt={compra.titulo}
+        src={compra.libro?.imagen || "https://placehold.net/120x180"}
+        alt={compra.libro?.titulo}
         className="w-24 h-36 object-cover rounded-md border border-slate-100"
       />
 
@@ -74,18 +74,20 @@ function HistoryItem({ compra }) {
         <div className="inline-block px-3 py-1 bg-green-100 text-green-800 text-[10px] font-bold rounded-full mb-1 uppercase tracking-wider">
           Completado
         </div>
-        <h3 className="text-xl font-bold text-slate-900">{compra.titulo || "Libro Desconocido"}</h3>
+        <h3 className="text-xl font-bold text-slate-900">{compra.libro?.titulo || "Libro Desconocido"}</h3>
         <p className="text-sm font-semibold text-amber-600">Orden #{compra.purchaseId || compra.id || "000"}</p>
         <div className="pt-2">
           <p className="text-xs text-slate-500">Precio total</p>
           <p className="text-lg font-bold text-slate-900">
-            ${compra.precio ? Number(compra.precio).toLocaleString("es-CO") : "0"}
+            ${compra.precioPagado ? Number(compra.precioPagado).toLocaleString("es-CO") : "0"}
           </p>
         </div>
       </div>
 
       <div className="flex flex-col sm:items-end justify-between self-stretch py-1 gap-4 sm:gap-0">
-        <span className="text-sm text-slate-600 font-medium">{compra.fecha || "9 feb 2025"}</span>
+        <span className="text-sm text-slate-600 font-medium">
+          {compra.fechaCompra ? new Date(compra.fechaCompra).toLocaleDateString() : "9 feb 2025"}
+        </span>
         <button className="px-5 py-2 bg-slate-900 text-white font-medium rounded-full text-sm hover:bg-slate-800 transition shadow-sm mt-auto">
           {t.account.viewDetails}
         </button>
@@ -168,7 +170,7 @@ export default function AccountClient() {
               <p className="text-text-secondary">{t.account.loading}</p>
             ) : purchases && purchases.length > 0 ? (
               purchases.map((compra) => (
-                <HistoryItem key={compra.purchaseId || compra.id} compra={compra} />
+                <HistoryItem key={compra.purchaseId || compra.id} compra={compra} t={t} />
               ))
             ) : (
               <div className="text-text-secondary">{t.account.noPurchases}</div>
