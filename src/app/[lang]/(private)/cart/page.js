@@ -18,7 +18,7 @@ function CartPage() {
     0
   );
 
-  // 🔥 EMPTY STATE
+
   if (!cart.length) {
     return (
       <section className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4">

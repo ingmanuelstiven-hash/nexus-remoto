@@ -1,4 +1,4 @@
-// Cliente HTTP básico para pegarle a los endpoints locales
+
 const getBaseUrl = () => {
   if (typeof window !== "undefined") {
     // En el navegador usamos rutas relativas

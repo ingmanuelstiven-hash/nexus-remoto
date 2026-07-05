@@ -26,7 +26,6 @@ export default function ProtectedLayout({ children }) {
       return;
     }
 
-    // loader suave solo cuando ya sabemos estado
     startLoading(300);
 
   }, [mounted, user]);
@@ -37,10 +36,9 @@ export default function ProtectedLayout({ children }) {
     }
   }, [mounted]);
 
-  // 🔥 1. evitar mismatch SSR
+
   if (!mounted) return null;
 
-  // 🔥 2. loader ya controlado en cliente
   if (isLoading) {
     return <Loader text={t.loading.session} />;
   }

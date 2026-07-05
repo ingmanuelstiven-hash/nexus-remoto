@@ -16,6 +16,16 @@ export const metadata = {
     "Aplicación web desarrollada con Next.js para librería universitaria y espacios de coworking.",
 };
 
+export function generateStaticParams() {
+  return [
+    { lang: 'es' },
+    { lang: 'en' },
+    { lang: 'fr' },
+    { lang: 'it' },
+    { lang: 'de' }
+  ];
+}
+
 export default async function RootLayout(props) {
   const { children, params } = props;
   const { lang } = await params;
