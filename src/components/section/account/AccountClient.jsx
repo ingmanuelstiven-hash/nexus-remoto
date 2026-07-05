@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { storeService } from "@/services/storeService";
 import { User, Calendar, ShoppingBag, Settings, LogOut } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useI18n } from "@/context/TranslationsProvider";
+import { getImageSrc } from "@/lib/getImageSrc";
 
 // ==========================================
 // COMPONENTES STUB
@@ -65,7 +66,7 @@ function HistoryItem({ compra, t }) {
   return (
     <div className="flex flex-col sm:flex-row gap-6 p-5 border border-border-light rounded-xl sm:items-center bg-white shadow-sm hover:shadow-md transition">
       <img
-        src={compra.libro?.imagen || "https://placehold.net/120x180"}
+        src={getImageSrc(compra.libro?.imagen) || "https://placehold.net/120x180"}
         alt={compra.libro?.titulo}
         className="w-24 h-36 object-cover rounded-md border border-slate-100"
       />
@@ -100,10 +101,11 @@ export default function AccountClient() {
   const { user, logout } = useAuth();
   const router = useRouter();
   const t = useI18n();
+  const searchParams = useSearchParams();
 
   const [loading, setLoading] = useState(false);
   const [purchases, setPurchases] = useState([]);
-  const [activeTab, setActiveTab] = useState("perfil");
+  const [activeTab, setActiveTab] = useState(searchParams.get("tab") || "perfil");
 
   useEffect(() => {
     const loadPurchases = async () => {

@@ -172,7 +172,7 @@ function CheckoutPage() {
               {t.checkout.back_library}
             </button>
             <button
-              onClick={() => router.push(`/${lang}/account`)}
+              onClick={() => router.push(`/${lang}/account?tab=historial-compras`)}
               className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-white border border-slate-300 px-6 py-3.5 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition"
             >
               <ShoppingBag size={16} />
